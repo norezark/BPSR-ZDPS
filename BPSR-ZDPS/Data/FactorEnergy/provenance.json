@@ -1,0 +1,18 @@
+{
+  "feature": "Illusion Energy personal port",
+  "sourceRepository": "https://github.com/fudiyangjin/resonance-logs-cn",
+  "sourceCommit": "bd71d2dfd3c7289e6398c4cd042f4357d4f35721",
+  "sourcePaths": [
+    "src/lib/config/counter_source_templates.json",
+    "src/lib/config/counter_slot_templates.json",
+    "src/lib/config/season_cultivate_factor_costs.json",
+    "src/lib/config/ja-JP/counter_source_templates.json",
+    "src/lib/config/ja-JP/counter_slot_templates.json"
+  ],
+  "targetBaseCommit": "cfeb58c0acc85bc17181b413b9e50b0b26c15c5d",
+  "supportedFactorSeasons": [1, 2, 3],
+  "sourceTemplates": 84,
+  "sourceRules": 86,
+  "outputTemplates": 39,
+  "itemCosts": 390
+}
