@@ -59,10 +59,10 @@ public static class FactorEnergyWindow
             else if (state.Season >= 4)
                 Wrapped($"シーズン {state.Season} の因子方式は未対応です。この定義はS1〜S3用です。");
             else if (state.Rows.Length == 0)
-                Wrapped("対応する装着中の出力因子がありません。ゲーム内の虚妄因子構成を確認してください。");
+                Wrapped("対応する実像因子が装着されていません。ゲーム内の潜在心相晶の構成を確認してください。");
             else
             {
-                if (state.Sources.Length == 0) Colored(Amber, "対応するエネルギー獲得因子がありません。");
+                if (state.Sources.Length == 0) Colored(Amber, "虚妄エネルギーを獲得する対応因子（第六感）がありません。");
                 foreach (var row in state.Rows)
                 {
                     ImGui.PushID(row.ItemId);
@@ -86,7 +86,7 @@ public static class FactorEnergyWindow
                 Colored(Amber, "未対応の装着アイテムがあります");
                 Wrapped(string.Join(", ", state.UnknownItems));
             }
-            if (ImGui.CollapsingHeader("獲得因子・受信状況"))
+            if (ImGui.CollapsingHeader("第六感因子・受信状況"))
             {
                 foreach (var source in state.Sources) Wrapped(source.Name);
                 ImGui.Text($"Season: {state.Season}  UID: {state.LocalUuid >> 16}");

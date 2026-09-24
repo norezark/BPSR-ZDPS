@@ -14,5 +14,12 @@
   "sourceTemplates": 84,
   "sourceRules": 86,
   "outputTemplates": 39,
-  "itemCosts": 390
+  "itemCosts": 390,
+  "localizationReview": {
+    "locale": "ja-JP",
+    "reviewedOn": "2026-09-25",
+    "revision": "fix2",
+    "notes": "Japanese display names and summaries are maintained locally; calculation rules and IDs remain pinned to sourceCommit.",
+    "documentation": "JAPANESE-NAMES.md"
+  }
 }
