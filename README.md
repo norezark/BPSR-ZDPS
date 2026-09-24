@@ -1,3 +1,25 @@
+# ZDPS Illusion Energy — 虚妄エネルギー対応フォーク
+
+**このリポジトリは [Blue-Protocol-Source/BPSR-ZDPS](https://github.com/Blue-Protocol-Source/BPSR-ZDPS) の非公式フォークです。**
+ZDPS v0.1.7.5 をベースに、[resonance-logs-cn](https://github.com/fudiyangjin/resonance-logs-cn) の定義・計算方式を移植し、装着中の実像因子の虚妄エネルギーを推定表示します。元の ZDPS の開発者による公式配布ではありません。
+
+**[改造版のダウンロード](https://github.com/norezark/BPSR-ZDPS/releases)** · **[日本語の使い方・更新手順](README.FactorEnergy.ja.md)** · **[変更履歴](CHANGELOG.FactorEnergy.md)**
+
+- 全9クラス、S1〜S3の因子方式に対応。第六感84定義／86計算ルール、実像39定義、アイテム別必要量390件を収録しています。
+- 専用ウィンドウで現在値・必要量・加算停止時間を表示します。キャプチャ開始後にゲームへ再ログインすると構成を取得できます。
+- 省略された属性による同期エラーの修正と、日本語表記123項目の見直しを含みます。
+- 通信からの推定値です。ゲーム実機での数値照合は未実施です。S4以降は未対応と表示します。
+
+Windows x64版のZIPを展開し、`BPSR-ZDPS.exe` を起動してください。.NETランタイムは同梱しています。Npcapの導入は元のZDPSと同様に必要です。
+
+開発ブランチは `feature/illusion-energy` です。上流の更新は `upstream/master` からマージできます。改造版の報告先は [このフォークのIssues](https://github.com/norezark/BPSR-ZDPS/issues) です。
+
+本フォーク全体は **AGPL-3.0-only** で配布します。ZDPS由来部分のMIT表記を [LICENSES/BPSR-ZDPS-MIT.txt](LICENSES/BPSR-ZDPS-MIT.txt) に保持しています。移植元・変更日・適用範囲は [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)、全文は [LICENSE](LICENSE) を参照してください。各リリースには対応するソースを添付します。
+
+---
+
+以下は上流ZDPSのREADMEです。ここにある上流版のダウンロード先・サポート先は、この改造版とは別です。
+
 # ZDPS - Damage Meter And Companion Tool
 ZDPS is a Damage Meter and Companion Tool for Blue Protocol: Star Resonance. It's built on modern frameworks, making it fast and efficient at performing the role of a DPS Meter. It however also packs a lot of additional features in it such as complete [Encounter History](#Encounter-History-Browser), [Module Optimizer](#Module-Optimizer), [Log Reporting](#Integrations), [Field Boss/Magical Creature Spawn Tracking](#BPTimer-Integration), [Cooldown Tracking](#Cooldown-Priority-Tracker), [Raid Warnings](#Raid-Warnings), [Chat](#Chat), and more.
 

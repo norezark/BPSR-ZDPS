@@ -1,15 +1,14 @@
-name: .NET
+name: Illusion Energy build
 
 on:
   push:
-    branches: ["master"]
+    branches: ["feature/illusion-energy"]
   pull_request:
-    branches: ["master"]
-  release:
-    types: [published]
+    branches: ["feature/illusion-energy"]
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -21,19 +20,21 @@ jobs:
           fetch-depth: 0
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: |
+            9.0.x
+            10.0.x
 
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Build
+      - name: Test and package fork
         shell: pwsh
-        run: ./publish.bat
+        run: ./scripts/Publish-FactorEnergy.ps1 -Version "ci-${{ github.run_number }}"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ZDPS - DPS Meter
-          path: ./publish
+          name: ZDPS-IllusionEnergy-win-x64
+          path: |
+            artifacts/*.zip
+            artifacts/SHA256SUMS-*.txt
+            artifacts/verification-*.txt

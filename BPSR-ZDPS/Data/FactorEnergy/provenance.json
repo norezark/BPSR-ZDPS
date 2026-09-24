@@ -1,5 +1,7 @@
 {
-  "feature": "Illusion Energy personal port",
+  "feature": "ZDPS Illusion Energy fork",
+  "forkRepository": "https://github.com/norezark/BPSR-ZDPS",
+  "sourceLicense": "AGPL-3.0-only",
   "sourceRepository": "https://github.com/fudiyangjin/resonance-logs-cn",
   "sourceCommit": "bd71d2dfd3c7289e6398c4cd042f4357d4f35721",
   "sourcePaths": [

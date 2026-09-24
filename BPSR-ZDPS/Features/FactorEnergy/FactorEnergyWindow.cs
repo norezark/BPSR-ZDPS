@@ -104,6 +104,14 @@ public static class FactorEnergyWindow
                 float scale = options.TextScale;
                 if (ImGui.SliderFloat("文字サイズ", ref scale, 0.75f, 2f)) { options.TextScale = scale; FactorEnergyModule.SaveOptions(); }
             }
+            if (ImGui.CollapsingHeader("この改造版について"))
+            {
+                Wrapped("ZDPS Illusion Energy — BPSR-ZDPSの非公式フォーク");
+                Wrapped("ZDPS: Copyright (c) 2025 Blue-Protocol-Source (MIT)");
+                Wrapped("虚妄エネルギーの移植元: fudiyangjin / resonance-logs-cn (AGPL-3.0-only)");
+                Wrapped("改造版全体: AGPL-3.0-only。無保証です。このライセンスに従って再配布・改変できます。全文は同梱のLICENSE、詳細はTHIRD-PARTY-NOTICES.mdを参照してください。");
+                Wrapped("ソース・配布物: https://github.com/norezark/BPSR-ZDPS");
+            }
             ImGui.PopFont();
         }
         ImGui.End();

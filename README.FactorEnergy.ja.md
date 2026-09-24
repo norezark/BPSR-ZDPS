@@ -1,8 +1,10 @@
-# 虚妄エネルギー対応・個人利用版
+# ZDPS Illusion Energy — 虚妄エネルギー対応フォーク
+
+この版は [Blue-Protocol-Source/BPSR-ZDPS](https://github.com/Blue-Protocol-Source/BPSR-ZDPS) の非公式フォークです。公開先は [norezark/BPSR-ZDPS](https://github.com/norezark/BPSR-ZDPS)、配布物は [Releases](https://github.com/norezark/BPSR-ZDPS/releases) にあります。
 
 ZDPS v0.1.7.5 に、装着中の実像因子の虚妄エネルギーを推定表示する機能を追加した版です。ゲームのスキル使用、ヒット、バフ、リソース消費、移動を読み取り、因子ごとに現在値・必要量・加算停止時間を表示します。
 
-現在の配布物は **修正版2（fix2）** です。全9クラスの表示データ123項目を見直し、クラス・スキル・リソース・因子の日本語表記を修正しました。例えば「ウインドナイト」を「ゲイルランサー」、「居合斬」を「雷刃抜刀」、「真因子」を「実像因子」に変更しています。照合資料と保守方法は [日本語表記の修正記録](JAPANESE-NAMES.md) にまとめています。
+最初の公開版は **v0.1.7.5-illusion.1** です。修正版2（fix2）までの修正を含みます。全9クラスの表示データ123項目を見直し、クラス・スキル・リソース・因子の日本語表記を修正しました。例えば「ウインドナイト」を「ゲイルランサー」、「居合斬」を「雷刃抜刀」、「真因子」を「実像因子」に変更しています。照合資料と保守方法は [日本語表記の修正記録](JAPANESE-NAMES.md) にまとめています。
 
 fix1 の同期エラー修正も含みます。以前の版を終了し、修正版を起動してからゲームへ再ログインしてください。
 
@@ -34,7 +36,15 @@ fix1 の同期エラー修正も含みます。以前の版を終了し、修正
 
 ## 上流の ZDPS を後から取り込む
 
-ソースフォルダーは履歴を含む Git リポジトリです。公式リポジトリを `upstream`、個人用の変更を `feature/illusion-energy` ブランチとして管理しています。アプリ内に更新機能は追加していません。
+ソースフォルダーは履歴を含む Git リポジトリです。自分の公開フォークを `origin`、元のZDPSを `upstream`、改造版を `feature/illusion-energy` ブランチとして管理します。アプリ内に更新機能は追加していません。
+
+新しく取得する場合は、次のコマンドを一度実行します。既存の作業フォルダーでは `git remote -v` で設定を確認し、同名のremoteを重ねて追加しないでください。
+
+```powershell
+git clone --branch feature/illusion-energy https://github.com/norezark/BPSR-ZDPS.git
+cd BPSR-ZDPS
+git remote add upstream https://github.com/Blue-Protocol-Source/BPSR-ZDPS.git
+```
 
 PowerShell で、この README のあるソースフォルダーを開いて実行します。作業途中の変更がある場合は、先にコミットしてから更新してください。
 
@@ -56,7 +66,9 @@ git merge upstream/master
 | `BPSR-ZDPSLib/NetCap.cs` | `NotifyObserved` / `ProxyObserved`、圧縮された Call / FrameUp の処理 |
 | `BPSR-ZDPS/Managers/MessageManager.cs` | キャプチャ開始前の `FactorEnergyModule.Attach`、停止時の `Detach` |
 | `BPSR-ZDPS/Windows/MainWindow.cs` | `FactorEnergyWindow.Draw` と `Illusion Energy` メニュー |
-| `BPSR-ZDPS/BPSR-ZDPS.csproj` | `Data/FactorEnergy/**` の出力・発行へのコピー |
+| `BPSR-ZDPS/BPSR-ZDPS.csproj` | `Data/FactorEnergy/**` とライセンス・クレジットの出力・発行へのコピー |
+
+公開用のREADME先頭、`LICENSE`、`.github/workflows/dotnet.yml` も改造版の内容を残します。上流MIT本文は `LICENSES/BPSR-ZDPS-MIT.txt` に保持します。
 
 更新後はテストと発行を行います。Git と .NET 9 以降の SDK が必要です。今回のビルドでは .NET SDK 10.0.300 を使用しています。
 
@@ -68,6 +80,14 @@ dotnet publish BPSR-ZDPS/BPSR-ZDPS.csproj -c Release -r win-x64 --self-contained
 ```
 
 `publish-factor` 内の実行ファイルとデータを一緒に使います。通常の ZDPS 配布物だけで上書きすると、この追加機能は含まれない状態になるため、今後の更新もこのブランチへ取り込んでビルドしてください。
+
+GitHubで公開するZIP・対応ソース・チェックサムをまとめて作る場合は、変更をコミットした後、PowerShell 7で次を実行します。テストとヘッドレスUI確認も実行します。SDKに加え、テスト実行用の.NET 9ランタイムが必要です（.NET 9 SDKにも含まれます）。
+
+```powershell
+./scripts/Publish-FactorEnergy.ps1 -Version 0.1.7.5-illusion.1
+```
+
+成果物は `artifacts/` に作成します。使用済みのインストールフォルダーをZIP化せず、このスクリプトで新規に発行した配布物を使ってください。GitHub Actionsでも同じ手順で検証・成果物作成を行います。リリースの公開は手動です。
 
 ## 検証と実装の配置
 
@@ -93,3 +113,7 @@ dotnet publish BPSR-ZDPS/BPSR-ZDPS.csproj -c Release -r win-x64 --self-contained
 - resonance-logs-cn: [`bd71d2dfd3c7289e6398c4cd042f4357d4f35721`](https://github.com/fudiyangjin/resonance-logs-cn/commit/bd71d2dfd3c7289e6398c4cd042f4357d4f35721) / v0.2.4
 
 移植元の説明文と計算設定が異なる箇所は、計算設定を採用しています（例: フロストメイジの対象継続スキルは500ms間隔、ヴァーダントオラクルの対象スキル要求は342点）。継続加算は開始時刻にも1回発生し、バフの有効期限ちょうどには発生しません。
+
+## クレジットとライセンス
+
+本フォーク全体はAGPL-3.0-onlyで配布します。元のZDPSのMIT表記と移植元resonance-logs-cnのクレジットを保持しています。詳細は [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)、ライセンス全文は [LICENSE](LICENSE) を参照してください。保証はありません。各リリースのソースZIPから同じ版をビルドできます。
