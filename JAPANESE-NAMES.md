@@ -38,7 +38,7 @@
 
 ## 上流更新時の維持
 
-実行時の日本語表示は `BPSR-ZDPS/Data/FactorEnergy/ja-JP/counter_source_templates.json` と `counter_slot_templates.json` に集約されています。上流ZDPSの本体翻訳を置き換える変更はありません。この2ファイルを個人用ブランチで維持してください。
+実行時の日本語表示は `BPSR-ZDPS/Data/FactorEnergy/ja-JP/counter_source_templates.json` と `counter_slot_templates.json` に集約されています。上流ZDPSの本体翻訳を置き換える変更はありません。この2ファイルを `main` で維持してください。
 
 `sourceId`、`slotTemplateId`、アイテム・スキル・バフID、加算量、必要量、加算停止時間、計算・通信処理は今回変更していません。移植元の計算定義3ファイルはfix1と同一です。ヴァーダントオラクルX3は移植元の説明値と実装値に差があるため、一律171ptとする表示をやめ、条件名のみを示しています。計算値の調整は行っていません。
 

@@ -36,7 +36,7 @@ fix1 の同期エラー修正も含みます。以前の版を終了し、修正
 
 ## 上流の ZDPS を後から取り込む
 
-ソースフォルダーは履歴を含む Git リポジトリです。自分の公開フォークを `origin`、元のZDPSを `upstream`、虚妄エネルギー機能を統合した改造版を `main` ブランチとして管理します。アプリ内に更新機能は追加していません。
+ソースは `main` から取得し、利用・開発・更新の基準にします。自分の公開フォークを `origin`、元のZDPSを `upstream` として管理します。アプリ内に更新機能は追加していません。
 
 新しく取得する場合は、次のコマンドを一度実行します。既存の作業フォルダーでは `git remote -v` で設定を確認し、同名のremoteを重ねて追加しないでください。
 
@@ -51,8 +51,7 @@ PowerShell で、この README のあるソースフォルダーを開いて実�
 ```powershell
 git switch main
 git status --short
-# 更新前の状態を残す。既に同名の枝がある場合は名前を変える。
-git branch backup/main-before-update
+git pull --ff-only origin main
 git fetch upstream --tags
 git merge upstream/master
 ```
@@ -79,7 +78,7 @@ dotnet run --project tests/FactorEnergy.UiSmoke -c Release
 dotnet publish BPSR-ZDPS/BPSR-ZDPS.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=false -o publish-factor
 ```
 
-`publish-factor` 内の実行ファイルとデータを一緒に使います。通常の ZDPS 配布物だけで上書きすると、この追加機能は含まれない状態になるため、今後の更新もこのブランチへ取り込んでビルドしてください。
+`publish-factor` 内の実行ファイルとデータを一緒に使います。通常の ZDPS 配布物だけで上書きすると、この追加機能は含まれない状態になるため、今後の更新も `main` へ取り込んでビルドしてください。検証が済んだ変更を `git push origin main` で公開します。
 
 GitHubで公開するZIP・対応ソース・チェックサムをまとめて作る場合は、変更をコミットした後、PowerShell 7で次を実行します。テストとヘッドレスUI確認も実行します。SDKに加え、テスト実行用の.NET 9ランタイムが必要です（.NET 9 SDKにも含まれます）。
 
