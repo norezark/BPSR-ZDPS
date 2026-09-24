@@ -1,15 +1,14 @@
-name: .NET
+name: Fork build
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
   pull_request:
-    branches: ["master"]
-  release:
-    types: [published]
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -21,19 +20,19 @@ jobs:
           fetch-depth: 0
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
-
-      - name: Restore dependencies
-        run: dotnet restore
+          dotnet-version: 10.0.x
 
       - name: Build
         shell: pwsh
-        run: ./publish.bat
+        run: |
+          dotnet publish BPSR-ZDPS/BPSR-ZDPS.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -p:PublishTrimmed=false -o publish
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Copy-Item -LiteralPath LICENSE -Destination publish/LICENSE
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ZDPS - DPS Meter
+          name: BPSR-ZDPS-main-win-x64
           path: ./publish

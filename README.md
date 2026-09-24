@@ -1,3 +1,23 @@
+# BPSR-ZDPS — 自分用フォーク
+
+このリポジトリは [Blue-Protocol-Source/BPSR-ZDPS](https://github.com/Blue-Protocol-Source/BPSR-ZDPS) を基に、norezark が個人用の機能追加・調整を管理する非公式フォークです。元のZDPSの開発者による公式配布ではありません。
+
+`main` は上流ZDPSと、このフォーク共通の説明・開発設定を置くベースブランチです。個別機能の実装は専用ブランチで管理します。上流の履歴を保持し、必要なタイミングで更新を取り込む方針です。
+
+## 自分用の追加機能
+
+| 機能 | 概要 | コード・配布物 |
+|---|---|---|
+| 虚妄エネルギー表示 | 装着中の実像因子の虚妄エネルギーを推定表示します。 | [feature/illusion-energy](https://github.com/norezark/BPSR-ZDPS/tree/feature/illusion-energy) · [説明](https://github.com/norezark/BPSR-ZDPS/blob/feature/illusion-energy/README.FactorEnergy.ja.md) · [配布版](https://github.com/norezark/BPSR-ZDPS/releases/tag/v0.1.7.5-illusion.1) |
+
+ブランチの役割や上流の更新手順は [FORK.md](FORK.md) にまとめています。このフォークへの報告は [Issues](https://github.com/norezark/BPSR-ZDPS/issues) へお願いします。
+
+`main` のライセンスは上流と同じ [MIT](LICENSE) です。個別機能のライセンス・クレジット・対応範囲は、各ブランチの説明を参照してください。
+
+---
+
+以下は上流ZDPSのREADMEです。記載されている上流版の配布先・サポート先は、この個人用フォークとは別です。
+
 # ZDPS - Damage Meter And Companion Tool
 ZDPS is a Damage Meter and Companion Tool for Blue Protocol: Star Resonance. It's built on modern frameworks, making it fast and efficient at performing the role of a DPS Meter. It however also packs a lot of additional features in it such as complete [Encounter History](#Encounter-History-Browser), [Module Optimizer](#Module-Optimizer), [Log Reporting](#Integrations), [Field Boss/Magical Creature Spawn Tracking](#BPTimer-Integration), [Cooldown Tracking](#Cooldown-Priority-Tracker), [Raid Warnings](#Raid-Warnings), [Chat](#Chat), and more.
 
