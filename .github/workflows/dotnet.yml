@@ -22,17 +22,19 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 10.0.x
+          dotnet-version: |
+            9.0.x
+            10.0.x
 
-      - name: Build
+      - name: Test and package fork
         shell: pwsh
-        run: |
-          dotnet publish BPSR-ZDPS/BPSR-ZDPS.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -p:PublishTrimmed=false -o publish
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          Copy-Item -LiteralPath LICENSE -Destination publish/LICENSE
+        run: ./scripts/Publish-FactorEnergy.ps1 -Version "ci-${{ github.run_number }}"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: BPSR-ZDPS-main-win-x64
-          path: ./publish
+          path: |
+            artifacts/*.zip
+            artifacts/SHA256SUMS-*.txt
+            artifacts/verification-*.txt

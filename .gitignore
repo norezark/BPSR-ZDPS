@@ -362,3 +362,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Personal factor tracking settings (definitions are versioned separately).
+FactorEnergy.settings.json
+FactorEnergy.settings.json.tmp

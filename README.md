@@ -2,22 +2,17 @@
 
 このリポジトリは [Blue-Protocol-Source/BPSR-ZDPS](https://github.com/Blue-Protocol-Source/BPSR-ZDPS) を基に、norezark が個人用の機能追加・調整を管理する非公式フォークです。元のZDPSの開発者による公式配布ではありません。
 
-`main` は上流ZDPSと、このフォーク共通の説明・開発設定を置くベースブランチです。個別機能の実装は専用ブランチで管理します。上流の履歴を保持し、必要なタイミングで更新を取り込む方針です。
+`main` は上流ZDPSに個人用機能を統合した、このフォークのベースブランチです。機能追加は専用ブランチで開発・確認してから `main` に取り込みます。上流の履歴を保持し、必要なタイミングで更新を取り込む方針です。
 
 ## 自分用の追加機能
 
 | 機能 | 概要 | コード・配布物 |
 |---|---|---|
-| 虚妄エネルギー表示 | 装着中の実像因子の虚妄エネルギーを推定表示します。 | [feature/illusion-energy](https://github.com/norezark/BPSR-ZDPS/tree/feature/illusion-energy) · [説明](https://github.com/norezark/BPSR-ZDPS/blob/feature/illusion-energy/README.FactorEnergy.ja.md) · [配布版](https://github.com/norezark/BPSR-ZDPS/releases/tag/v0.1.7.5-illusion.1) |
+| 虚妄エネルギー表示 | 装着中の実像因子の虚妄エネルギーを推定表示します。**mainに統合済み**です。 | [コード](BPSR-ZDPS/Features/FactorEnergy) · [説明](README.FactorEnergy.ja.md) · [配布版](https://github.com/norezark/BPSR-ZDPS/releases/tag/v0.1.7.5-illusion.1) |
 
 ブランチの役割や上流の更新手順は [FORK.md](FORK.md) にまとめています。このフォークへの報告は [Issues](https://github.com/norezark/BPSR-ZDPS/issues) へお願いします。
 
-ライセンスの対象は次のとおりです。
-
-- **`main` / `master` の上流ZDPSを基にした版：[MIT](LICENSE)**。虚妄エネルギーの移植実装・定義データは含みません。
-- **`feature/illusion-energy` と配布版 `v0.1.7.5-illusion.1`：[AGPL-3.0-only](https://github.com/norezark/BPSR-ZDPS/blob/v0.1.7.5-illusion.1/LICENSE)**。resonance-logs-cn由来の実装・定義データを含む改造版全体の配布条件です。ZDPS由来部分のMIT表記も[保持しています](https://github.com/norezark/BPSR-ZDPS/blob/v0.1.7.5-illusion.1/LICENSES/BPSR-ZDPS-MIT.txt)。
-
-このページのMIT表記は、虚妄エネルギー対応版をMITで配布するという意味ではありません。各機能の対応範囲・クレジットは、該当ブランチの説明を参照してください。
+`main` はresonance-logs-cn由来の虚妄エネルギー機能を含む改造版として、**[AGPL-3.0-only](LICENSE)** で配布します。ZDPS由来部分のMIT表記は [LICENSES/BPSR-ZDPS-MIT.txt](LICENSES/BPSR-ZDPS-MIT.txt) に保持しています。移植元とライセンスの詳細は [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) を参照してください。
 
 ---
 

@@ -1,0 +1,197 @@
+[
+  {
+    "slotTemplateId": "stormablade_x1",
+    "name": "ストームブレイド 実像因子 X1、雷刃抜刀発動時に雷閃の刀気を1回追加",
+    "description": "雷刃抜刀を発動すると雷閃の刀気を1回追加"
+  },
+  {
+    "slotTemplateId": "stormablade_x2",
+    "name": "ストームブレイド 実像因子 X2、追加で雷印を獲得",
+    "description": "追加で雷印を獲得"
+  },
+  {
+    "slotTemplateId": "stormablade_s3_x3",
+    "name": "ストームブレイド 実像因子 X3、次の究極スキルは必ず会心になりダメージが増加",
+    "description": "次の究極スキルは必ず会心になり、滅妄ダメージが増加"
+  },
+  {
+    "slotTemplateId": "stormablade_s3_x5",
+    "name": "ストームブレイド 実像因子 X5、幸運の一撃倍率と月刃の幸運確率が上昇",
+    "description": "10秒間、幸運の一撃倍率が上昇し、月刃の幸運確率が上昇"
+  },
+  {
+    "slotTemplateId": "stormablade_s3_x6",
+    "name": "ストームブレイド 実像因子 X6、雷霆鎌を発動",
+    "description": "雷霆鎌を発動"
+  },
+  {
+    "slotTemplateId": "flame_berserker_x1",
+    "name": "ツインストライカー 実像因子 X1、エネルギー蓄積後のイラプションは必ず会心",
+    "description": "エネルギー蓄積後のイラプションは必ず会心"
+  },
+  {
+    "slotTemplateId": "flame_berserker_x2",
+    "name": "ツインストライカー 実像因子 X2、次のアクススパイラルの消費が50%減少し範囲が2m増加",
+    "description": "次のアクススパイラルの消費が50%減少し、範囲が2m増加"
+  },
+  {
+    "slotTemplateId": "flame_berserker_x3",
+    "name": "ツインストライカー 実像因子 X3、エネルギー蓄積後10秒間、イラプションの最終ダメージが増加",
+    "description": "エネルギー蓄積後10秒間、イラプションの最終ダメージが増加"
+  },
+  {
+    "slotTemplateId": "flame_berserker_x4",
+    "name": "ツインストライカー 実像因子 X4、フレイムスピンを発動",
+    "description": "フレイムスピンを発動"
+  },
+  {
+    "slotTemplateId": "flame_berserker_x5",
+    "name": "ツインストライカー 実像因子 X5、10秒間、バーニングラッシュの最終ダメージが増加",
+    "description": "10秒間、バーニングラッシュの最終ダメージが増加"
+  },
+  {
+    "slotTemplateId": "beat_performer_s3_x2",
+    "name": "ビートパフォーマー 実像因子 X2、次のハーモニックアンセムが熱響を消費し、消費量に応じて最終ダメージが増加",
+    "description": "次のハーモニックアンセムが熱響を消費し、消費量に応じて最終ダメージが増加"
+  },
+  {
+    "slotTemplateId": "beat_performer_x3",
+    "name": "ビートパフォーマー 実像因子 X3、フレイムラプソディーを発動、リキャスト2秒",
+    "description": "フレイムラプソディーを発動、リキャスト2秒"
+  },
+  {
+    "slotTemplateId": "beat_performer_s3_x4",
+    "name": "ビートパフォーマー 実像因子 X4、サージヒールを発動",
+    "description": "サージヒールを1回発動"
+  },
+  {
+    "slotTemplateId": "beat_performer_x5",
+    "name": "ビートパフォーマー 実像因子 X5、スピーカーを召喚、リキャスト15秒",
+    "description": "スピーカーを召喚"
+  },
+  {
+    "slotTemplateId": "beat_performer_s3_x6",
+    "name": "ビートパフォーマー 実像因子 X6、次に熱響を消費した際、熱響を1回復",
+    "description": "次に熱響を消費した際、熱響を1回復"
+  },
+  {
+    "slotTemplateId": "marksman_x1",
+    "name": "ディバインアーチャー 実像因子 X1、臣狼を召喚してダメージ増加、リキャスト30秒",
+    "description": "臣狼を召喚してダメージ増加、リキャスト30秒"
+  },
+  {
+    "slotTemplateId": "marksman_x2",
+    "name": "ディバインアーチャー 実像因子 X2、次のアローレインで閃心を全回復、リキャスト12秒",
+    "description": "次のアローレインで閃心を全回復、リキャスト12秒"
+  },
+  {
+    "slotTemplateId": "marksman_s3_x3",
+    "name": "ディバインアーチャー 実像因子 X3、ハウリングボルトは必ず会心になりダメージ増加",
+    "description": "10秒間、ハウリングボルトは必ず会心になり、ハウリングボルトの滅妄ダメージが増加"
+  },
+  {
+    "slotTemplateId": "marksman_x5",
+    "name": "ディバインアーチャー 実像因子 X5、臣鷹を召喚、リキャスト30秒",
+    "description": "臣鷹を召喚、リキャスト30秒"
+  },
+  {
+    "slotTemplateId": "marksman_x6",
+    "name": "ディバインアーチャー 実像因子 X6、天界の臣鷹を召喚",
+    "description": "天界の臣鷹を召喚"
+  },
+  {
+    "slotTemplateId": "frost_mage_x1",
+    "name": "フロストメイジ 実像因子 X1、次のパーマフロスト中、玄氷上限が2増加",
+    "description": "次のパーマフロスト中、玄氷上限が2増加"
+  },
+  {
+    "slotTemplateId": "frost_mage_x2",
+    "name": "フロストメイジ 実像因子 X2、ダメージを与えた対象の位置にブリザードを召喚、リキャスト8秒",
+    "description": "ダメージを与えた対象の位置にブリザードを召喚、リキャスト8秒"
+  },
+  {
+    "slotTemplateId": "frost_mage_x3",
+    "name": "フロストメイジ 実像因子 X3、ウォータースフィアを放ち極寒状態を付与、リキャスト10秒",
+    "description": "ウォータースフィアを放ち極寒状態を付与、リキャスト10秒"
+  },
+  {
+    "slotTemplateId": "frost_mage_x4",
+    "name": "フロストメイジ 実像因子 X4、次のタイドプールはリキャストに入らない、リキャスト7秒",
+    "description": "次のタイドプールはリキャストに入らない、リキャスト7秒"
+  },
+  {
+    "slotTemplateId": "frost_mage_x5",
+    "name": "フロストメイジ 実像因子 X5、15秒間、玄氷上限+3",
+    "description": "15秒間、玄氷上限+3"
+  },
+  {
+    "slotTemplateId": "frost_mage_s3_x6",
+    "name": "フロストメイジ 実像因子 X6、氷矢が幸運の一撃を発動できダメージ増加",
+    "description": "次のパーマフロスト中、フロストレイをチャネリング中に氷矢が幸運の一撃を発動でき、幸運の一撃の最終ダメージが増加"
+  },
+  {
+    "slotTemplateId": "wind_knight_s3_x2",
+    "name": "ゲイルランサー 実像因子 X2、龍撃陣を発動",
+    "description": "龍撃陣を発動"
+  },
+  {
+    "slotTemplateId": "wind_knight_x4",
+    "name": "ゲイルランサー 実像因子 X4、15秒間、特殊攻撃の会心率が上昇",
+    "description": "15秒間、特殊攻撃の会心率が上昇"
+  },
+  {
+    "slotTemplateId": "wind_knight_x5",
+    "name": "ゲイルランサー 実像因子 X5、次の追撃身法中、刹那と鋭利衝の幸運確率が上昇",
+    "description": "次の追撃身法中、刹那と鋭利衝の幸運確率が上昇"
+  },
+  {
+    "slotTemplateId": "holy_shield_s3_x2",
+    "name": "シールドファイター 実像因子 X2、次のホーリーリングの範囲が2倍になり、回復対象の最大HPに応じた回復量が加算",
+    "description": "次のホーリーリングの範囲が2倍になり、回復対象の最大HPに応じた回復量が加算"
+  },
+  {
+    "slotTemplateId": "holy_shield_s3_x4",
+    "name": "シールドファイター 実像因子 X4、一定時間、滅妄ダメージ軽減と滅妄ダメージが増加",
+    "description": "一定時間、滅妄ダメージ軽減と滅妄ダメージが増加"
+  },
+  {
+    "slotTemplateId": "holy_shield_s3_x5",
+    "name": "シールドファイター 実像因子 X5、次にダメージを与えた際、ホーリーソードを発動。自身の現在HPに応じたダメージを追加",
+    "description": "次にダメージを与えた際、ホーリーソードを発動。自身の現在HPに応じたダメージを追加"
+  },
+  {
+    "slotTemplateId": "giant_blade_s3_x1",
+    "name": "ヘヴィガーディアン 実像因子 X1、次のバリア付与時に最終バリア量が増加",
+    "description": "次のバリア付与時に最終バリア量が増加"
+  },
+  {
+    "slotTemplateId": "giant_blade_s3_x2",
+    "name": "ヘヴィガーディアン 実像因子 X2、地崩の山摧を発動",
+    "description": "地崩の山摧を発動し、地崩の山摧のダメージが増加"
+  },
+  {
+    "slotTemplateId": "giant_blade_s3_x4",
+    "name": "ヘヴィガーディアン 実像因子 X4、最大HPが増加",
+    "description": "最大HPが増加し、スタック可能"
+  },
+  {
+    "slotTemplateId": "giant_blade_s3_x5",
+    "name": "ヘヴィガーディアン 実像因子 X5、レジスト反撃を発動",
+    "description": "レジスト反撃を発動し、レジスト反撃のダメージが増加"
+  },
+  {
+    "slotTemplateId": "giant_blade_s3_x6",
+    "name": "ヘヴィガーディアン 実像因子 X6、一定時間、レジストダメージ軽減が低下し、クラススキルの最終ダメージが増加",
+    "description": "一定時間、レジストダメージ軽減が低下し、クラススキルの最終ダメージが増加"
+  },
+  {
+    "slotTemplateId": "verdant_oracle_x2",
+    "name": "ヴァーダントオラクル 実像因子 X2、剛体と詠唱速度増加",
+    "description": "剛体と詠唱速度増加"
+  },
+  {
+    "slotTemplateId": "verdant_oracle_x3",
+    "name": "ヴァーダントオラクル 実像因子 X3、7秒間継続の茨が幸運の一撃を発動可能",
+    "description": "7秒間継続の茨が幸運の一撃を発動可能"
+  }
+]

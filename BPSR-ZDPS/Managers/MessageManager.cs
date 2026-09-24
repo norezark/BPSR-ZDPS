@@ -91,12 +91,14 @@ namespace BPSR_ZDPS
             //netCap.RegisterUnhandledHandler(ProcessUnhandled);
             //netCap.RegisterUnhandledProxyHandler(ProcessProxyUnhandled);
 
+            Features.FactorEnergy.FactorEnergyModule.Attach(netCap);
             netCap.Start();
             System.Diagnostics.Debug.WriteLine("MessageManager.InitializeCapturing : Capturing Started...");
         }
 
         public static void StopCapturing()
         {
+            Features.FactorEnergy.FactorEnergyModule.Detach();
             if (netCap != null)
             {
                 netCap.Stop();

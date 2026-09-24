@@ -1,0 +1,986 @@
+[
+  {
+    "slotTemplateId": "stormablade_x1",
+    "name": "雷影真实因子X1, 释放居合斩时附加1记雷切刀气",
+    "description": "释放居合斩时附加1记雷切刀气",
+    "slot": {
+      "threshold": 610,
+      "resetBuffId": 3050401,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3050401
+    ],
+    "itemIds": [
+      20021731,
+      20021732,
+      20021733,
+      20021734,
+      20021735,
+      20021736,
+      20021737,
+      20021738,
+      20021739,
+      20021740
+    ]
+  },
+  {
+    "slotTemplateId": "stormablade_x2",
+    "name": "雷影真实因子X2, 额外获得雷之印",
+    "description": "额外获得雷之印",
+    "slot": {
+      "threshold": 93,
+      "resetBuffId": 3050411,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3050411
+    ],
+    "itemIds": [
+      20021741,
+      20021742,
+      20021743,
+      20021744,
+      20021745,
+      20021746,
+      20021747,
+      20021748,
+      20021749,
+      20021750
+    ]
+  },
+  {
+    "slotTemplateId": "stormablade_s3_x3",
+    "name": "雷影真实因子X3, 下一次终极大招必定暴击且伤害提升",
+    "description": "下一次终极大招必定暴击且虚妄伤害提升",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3050421,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [3050421],
+    "itemIds": [20021751, 20021752, 20021753, 20021754, 20021755, 20021756, 20021757, 20021758, 20021759, 20021760]
+  },
+  {
+    "slotTemplateId": "stormablade_s3_x5",
+    "name": "雷影真实因子X5, 幸运一击倍率和月刃幸运几率提升",
+    "description": "10秒内自身幸运一击倍率提升，月刃获取的幸运几率提升",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3050441,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [3050441],
+    "itemIds": [20021771, 20021772, 20021773, 20021774, 20021775, 20021776, 20021777, 20021778, 20021779, 20021780]
+  },
+  {
+    "slotTemplateId": "stormablade_s3_x6",
+    "name": "雷影真实因子X6, 触发雷霆之镰",
+    "description": "触发雷霆之镰",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3050451,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [3050451],
+    "itemIds": [20021781, 20021782, 20021783, 20021784, 20021785, 20021786, 20021787, 20021788, 20021789, 20021790]
+  },
+  {
+    "slotTemplateId": "flame_berserker_x1",
+    "name": "双斧真实因子X1, 达到充能后无相火斩必定暴击",
+    "description": "双斧真实因子X1, 达到充能后无相火斩必定暴击",
+    "slot": {
+      "threshold": 660,
+      "resetBuffId": 3060401,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3060401
+    ],
+    "itemIds": [
+      20022211,
+      20022212,
+      20022213,
+      20022214,
+      20022215,
+      20022216,
+      20022217,
+      20022218,
+      20022219,
+      20022220
+    ]
+  },
+  {
+    "slotTemplateId": "flame_berserker_x2",
+    "name": "双斧真实因子X2, 下一次斧风消耗 -50%, 范围提升 2 米",
+    "description": "下一次斧风消耗 -50%, 范围提升 2 米",
+    "slot": {
+      "threshold": 240,
+      "resetBuffId": 3060411,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3060411
+    ],
+    "itemIds": [
+      20022221,
+      20022222,
+      20022223,
+      20022224,
+      20022225,
+      20022226,
+      20022227,
+      20022228,
+      20022229,
+      20022230
+    ]
+  },
+  {
+    "slotTemplateId": "flame_berserker_x3",
+    "name": "双斧真实因子X3, 达到充能后 10 秒内无相火斩最终伤害提升",
+    "description": "双斧真实因子X3, 达到充能后 10 秒内无相火斩最终伤害提升",
+    "slot": {
+      "threshold": 240,
+      "resetBuffId": 3060421,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3060421
+    ],
+    "itemIds": [
+      20022231,
+      20022232,
+      20022233,
+      20022234,
+      20022235,
+      20022236,
+      20022237,
+      20022238,
+      20022239,
+      20022240
+    ]
+  },
+  {
+    "slotTemplateId": "flame_berserker_x4",
+    "name": "双斧真实因子X4, 触发大红莲丸",
+    "description": "双斧真实因子X4, 触发大红莲丸",
+    "slot": {
+      "threshold": 350,
+      "resetBuffId": 3060431,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 5000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3060431
+    ],
+    "itemIds": [
+      20022241,
+      20022242,
+      20022243,
+      20022244,
+      20022245,
+      20022246,
+      20022247,
+      20022248,
+      20022249,
+      20022250
+    ]
+  },
+  {
+    "slotTemplateId": "flame_berserker_x5",
+    "name": "双斧真实因子X5, 10 秒内迷狂炎舞最终伤害增加",
+    "description": "双斧真实因子X5, 10 秒内迷狂炎舞最终伤害增加",
+    "slot": {
+      "threshold": 300,
+      "resetBuffId": 3060441,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3060441
+    ],
+    "itemIds": [
+      20022251,
+      20022252,
+      20022253,
+      20022254,
+      20022255,
+      20022256,
+      20022257,
+      20022258,
+      20022259,
+      20022260
+    ]
+  },
+  {
+    "slotTemplateId": "beat_performer_s3_x2",
+    "name": "灵魂真实因子X2, 下一次聚合乐章消耗热情并增伤",
+    "description": "下一次聚合乐章消耗所有演奏热情，每消耗1个演奏热情聚合乐章最终伤害提升",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3057411,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [3057411],
+    "itemIds": [20022161, 20022162, 20022163, 20022164, 20022165, 20022166, 20022167, 20022168, 20022169, 20022170]
+  },
+  {
+    "slotTemplateId": "beat_performer_x3",
+    "name": "灵魂真实因子X3, 触发烈焰狂想, 冷却时间 2s",
+    "description": "触发烈焰狂想, 冷却时间 2s",
+    "slot": {
+      "threshold": 132,
+      "resetBuffId": 3057421,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 2000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3057421
+    ],
+    "itemIds": [
+      20022171,
+      20022172,
+      20022173,
+      20022174,
+      20022175,
+      20022176,
+      20022177,
+      20022178,
+      20022179,
+      20022180
+    ]
+  },
+  {
+    "slotTemplateId": "beat_performer_s3_x4",
+    "name": "灵魂真实因子X4, 触发激涌治疗",
+    "description": "触发一次激涌治疗",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3057431,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 3000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [3057431],
+    "itemIds": [20022181, 20022182, 20022183, 20022184, 20022185, 20022186, 20022187, 20022188, 20022189, 20022190]
+  },
+  {
+    "slotTemplateId": "beat_performer_x5",
+    "name": "灵魂真实因子X5, 召唤音响, 冷却 15s",
+    "description": "召唤音响",
+    "slot": {
+      "threshold": 402,
+      "resetBuffId": 9903,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 15000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3057261
+    ],
+    "itemIds": [
+      20022191,
+      20022192,
+      20022193,
+      20022194,
+      20022195,
+      20022196,
+      20022197,
+      20022198,
+      20022199,
+      20022200
+    ]
+  },
+  {
+    "slotTemplateId": "beat_performer_s3_x6",
+    "name": "灵魂真实因子X6, 消耗演奏热情时回复演奏热情",
+    "description": "下一次消耗演奏热情时回复1个演奏热情",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3057451,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [3057451],
+    "itemIds": [20022201, 20022202, 20022203, 20022204, 20022205, 20022206, 20022207, 20022208, 20022209, 20022210]
+  },
+  {
+    "slotTemplateId": "marksman_x1",
+    "name": "神射真实因子X1, 召唤一只狼并增伤, 冷却 30s",
+    "description": "召唤一只狼并增伤, 冷却 30s",
+    "slot": {
+      "threshold": 1200,
+      "resetBuffId": 3053401,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 30000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3053401
+    ],
+    "itemIds": [
+      20021911,
+      20021912,
+      20021913,
+      20021914,
+      20021915,
+      20021916,
+      20021917,
+      20021918,
+      20021919,
+      20021920
+    ]
+  },
+  {
+    "slotTemplateId": "marksman_x2",
+    "name": "神射真实因子X2, 下次释放箭雨回复所有光能, 冷却 12s",
+    "description": "下次释放箭雨回复所有光能, 冷却 12s",
+    "slot": {
+      "threshold": 492,
+      "resetBuffId": 3053411,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 12000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3053411,
+      3053412
+    ],
+    "itemIds": [
+      20021921,
+      20021922,
+      20021923,
+      20021924,
+      20021925,
+      20021926,
+      20021927,
+      20021928,
+      20021929,
+      20021930
+    ]
+  },
+  {
+    "slotTemplateId": "marksman_s3_x3",
+    "name": "神射真实因子X3, 暴风箭矢必定暴击并增伤",
+    "description": "10秒内暴风箭矢必定暴击，同时暴风箭矢虚妄伤害提升",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3053421,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [3053421],
+    "itemIds": [20021931, 20021932, 20021933, 20021934, 20021935, 20021936, 20021937, 20021938, 20021939, 20021940]
+  },
+  {
+    "slotTemplateId": "marksman_x5",
+    "name": "神射真实因子X5, 召唤一只猎鹰, 冷却 30s",
+    "description": "召唤一只猎鹰",
+    "slot": {
+      "threshold": 900,
+      "resetBuffId": 3053441,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 30000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3053441
+    ],
+    "itemIds": [
+      20021951,
+      20021952,
+      20021953,
+      20021954,
+      20021955,
+      20021956,
+      20021957,
+      20021958,
+      20021959,
+      20021960
+    ]
+  },
+  {
+    "slotTemplateId": "marksman_x6",
+    "name": "神射真实因子X6, 召唤天界雄鹰",
+    "description": "召唤天界雄鹰",
+    "slot": {
+      "threshold": 360,
+      "resetBuffId": 3053451,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3053451
+    ],
+    "itemIds": [
+      20021961,
+      20021962,
+      20021963,
+      20021964,
+      20021965,
+      20021966,
+      20021967,
+      20021968,
+      20021969,
+      20021970
+    ]
+  },
+  {
+    "slotTemplateId": "frost_mage_x1",
+    "name": "冰魔真实因子X1, 下次冰之灌注期间玄冰上限+2",
+    "description": "下次冰之灌注期间玄冰上限+2",
+    "slot": {
+      "threshold": 400,
+      "resetBuffId": 3052401,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3052401,
+      3052402
+    ],
+    "itemIds": [
+      20021851,
+      20021852,
+      20021853,
+      20021854,
+      20021855,
+      20021856,
+      20021857,
+      20021858,
+      20021859,
+      20021860
+    ]
+  },
+  {
+    "slotTemplateId": "frost_mage_x2",
+    "name": "冰魔真实因子X2, 对造成伤害目标位置召唤寒冰风暴, 冷却 8s",
+    "description": "对造成伤害目标位置召唤寒冰风暴, 冷却 8s",
+    "slot": {
+      "threshold": 240,
+      "resetBuffId": 3052412,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 8000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3052411,
+      3052412
+    ],
+    "itemIds": [
+      20021861,
+      20021862,
+      20021863,
+      20021864,
+      20021865,
+      20021866,
+      20021867,
+      20021868,
+      20021869,
+      20021870
+    ]
+  },
+  {
+    "slotTemplateId": "frost_mage_x3",
+    "name": "冰魔真实因子X3, 释放水球, 并且赋予极寒状态, 冷却 10s",
+    "description": "释放水球, 并且赋予极寒状态, 冷却 10s",
+    "slot": {
+      "threshold": 514,
+      "resetBuffId": 3052421,
+      "resetSourceConfigId": 3052420,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 10000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3052421
+    ],
+    "itemIds": [
+      20021871,
+      20021872,
+      20021873,
+      20021874,
+      20021875,
+      20021876,
+      20021877,
+      20021878,
+      20021879,
+      20021880
+    ]
+  },
+  {
+    "slotTemplateId": "frost_mage_x4",
+    "name": "冰魔真实因子X4, 下一次释放浪潮汇聚不会进入冷却, 冷却 7s",
+    "description": "下一次释放浪潮汇聚不会进入冷却, 冷却 7s",
+    "slot": {
+      "threshold": 720,
+      "resetBuffId": 9901,
+      "resetSourceConfigId": 3052430,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 7000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3052431
+    ],
+    "itemIds": [
+      20021881,
+      20021882,
+      20021883,
+      20021884,
+      20021885,
+      20021886,
+      20021887,
+      20021888,
+      20021889,
+      20021890
+    ]
+  },
+  {
+    "slotTemplateId": "frost_mage_x5",
+    "name": "冰魔真实因子X5, 15s 内玄冰上限 + 3",
+    "description": "15s 内玄冰上限 + 3",
+    "slot": {
+      "threshold": 720,
+      "resetBuffId": 3052441,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3052441
+    ],
+    "itemIds": [
+      20021891,
+      20021892,
+      20021893,
+      20021894,
+      20021895,
+      20021896,
+      20021897,
+      20021898,
+      20021899,
+      20021900
+    ]
+  },
+  {
+    "slotTemplateId": "frost_mage_s3_x6",
+    "name": "冰魔真实因子X6, 冰箭可触发幸运一击并增伤",
+    "description": "下一次冰之灌注期间引导寒冰射线时冰箭可触发幸运一击，且幸运一击最终伤害提升",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3052451,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3052451,
+      3052452
+    ],
+    "itemIds": [
+      20021901,
+      20021902,
+      20021903,
+      20021904,
+      20021905,
+      20021906,
+      20021907,
+      20021908,
+      20021909,
+      20021910
+    ]
+  },
+  {
+    "slotTemplateId": "wind_knight_s3_x2",
+    "name": "青岚真实因子X2, 触发龙击炮",
+    "description": "触发龙击炮",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3051411,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 2000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [3051411],
+    "itemIds": [20021801, 20021802, 20021803, 20021804, 20021805, 20021806, 20021807, 20021808, 20021809, 20021810]
+  },
+  {
+    "slotTemplateId": "wind_knight_x4",
+    "name": "青岚真实因子X4, 15s 内特殊攻击暴击提升",
+    "description": "15s 内特殊攻击暴击提升",
+    "slot": {
+      "threshold": 360,
+      "resetBuffId": 3051431,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3051431
+    ],
+    "itemIds": [
+      20021821,
+      20021822,
+      20021823,
+      20021824,
+      20021825,
+      20021826,
+      20021827,
+      20021828,
+      20021829,
+      20021830
+    ]
+  },
+  {
+    "slotTemplateId": "wind_knight_x5",
+    "name": "青岚真实因子X5, 下一次追击身法提升幸运几率",
+    "description": "下一次追击身法提升幸运几率",
+    "slot": {
+      "threshold": 45,
+      "resetBuffId": 3051441,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3051441
+    ],
+    "itemIds": [
+      20021831,
+      20021832,
+      20021833,
+      20021834,
+      20021835,
+      20021836,
+      20021837,
+      20021838,
+      20021839,
+      20021840
+    ]
+  },
+  {
+    "slotTemplateId": "holy_shield_s3_x2",
+    "name": "神盾真实因子X2, 下一个圣环大小翻倍",
+    "description": "下一个圣环大小翻倍，治疗附加当前最大生命值",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3054411,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3054411,
+      3054412
+    ],
+    "itemIds": [
+      20021981,
+      20021982,
+      20021983,
+      20021984,
+      20021985,
+      20021986,
+      20021987,
+      20021988,
+      20021989,
+      20021990
+    ]
+  },
+  {
+    "slotTemplateId": "holy_shield_s3_x4",
+    "name": "神盾真实因子X4, 受到伤害增加，伤害增加",
+    "description": "一段时间内受到伤害增加，造成伤害增加",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3054431,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3054431
+    ],
+    "itemIds": [
+      20022001,
+      20022002,
+      20022003,
+      20022004,
+      20022005,
+      20022006,
+      20022007,
+      20022008,
+      20022009,
+      20022010
+    ]
+  },
+  {
+    "slotTemplateId": "holy_shield_s3_x5",
+    "name": "神盾真实因子X5, 触发圣剑",
+    "description": "下次造成伤害时触发圣剑，圣剑附加生命百分比伤害",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3054441,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 3000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3054441
+    ],
+    "itemIds": [
+      20022011,
+      20022012,
+      20022013,
+      20022014,
+      20022015,
+      20022016,
+      20022017,
+      20022018,
+      20022019,
+      20022020
+    ]
+  },
+  {
+    "slotTemplateId": "giant_blade_s3_x1",
+    "name": "巨刃真实因子X1, 下一次添加护盾时最终护盾提升",
+    "description": "下一次添加护盾时最终护盾提升",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3055361,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3055361
+    ],
+    "itemIds": [
+      20022031,
+      20022032,
+      20022033,
+      20022034,
+      20022035,
+      20022036,
+      20022037,
+      20022038,
+      20022039,
+      20022040
+    ]
+  },
+  {
+    "slotTemplateId": "giant_blade_s3_x2",
+    "name": "巨刃真实因子X2, 触发地崩山摧",
+    "description": "触发地崩山摧，地崩山摧伤害提升",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3055371,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 3000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3055371
+    ],
+    "itemIds": [
+      20022041,
+      20022042,
+      20022043,
+      20022044,
+      20022045,
+      20022046,
+      20022047,
+      20022048,
+      20022049,
+      20022050
+    ]
+  },
+  {
+    "slotTemplateId": "giant_blade_s3_x4",
+    "name": "巨刃真实因子X4, 生命上限提升",
+    "description": "生命上限提升，可叠加",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3055391,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3055391
+    ],
+    "itemIds": [
+      20022061,
+      20022062,
+      20022063,
+      20022064,
+      20022065,
+      20022066,
+      20022067,
+      20022068,
+      20022069,
+      20022070
+    ]
+  },
+  {
+    "slotTemplateId": "giant_blade_s3_x5",
+    "name": "巨刃真实因子X5, 触发格挡反击",
+    "description": "触发格挡反击，格挡反击伤害提升",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3055401,
+      "onBuffAdd": "freeze",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp",
+      "freezeDurationMs": 2000,
+      "onFreezeExpire": "resetAndStartCount"
+    },
+    "effectBuffIds": [
+      3055401
+    ],
+    "itemIds": [
+      20022071,
+      20022072,
+      20022073,
+      20022074,
+      20022075,
+      20022076,
+      20022077,
+      20022078,
+      20022079,
+      20022080
+    ]
+  },
+  {
+    "slotTemplateId": "giant_blade_s3_x6",
+    "name": "巨刃真实因子X6, 格挡减伤降低，职业技能最终伤害提升",
+    "description": "一段时间内格挡减伤降低，所有职业技能最终伤害提升",
+    "slot": {
+      "threshold": null,
+      "resetBuffId": 3055411,
+      "onBuffAdd": "reset",
+      "onBuffChange": "reset",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3055411
+    ],
+    "itemIds": [
+      20022081,
+      20022082,
+      20022083,
+      20022084,
+      20022085,
+      20022086,
+      20022087,
+      20022088,
+      20022089,
+      20022090
+    ]
+  },
+  {
+    "slotTemplateId": "verdant_oracle_x2",
+    "name": "森语真实因子X2, 霸体并增加释放速度",
+    "description": "霸体并增加释放速度",
+    "slot": {
+      "threshold": 500,
+      "resetBuffId": 3056391,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3056391
+    ],
+    "itemIds": [
+      20022101,
+      20022102,
+      20022103,
+      20022104,
+      20022105,
+      20022106,
+      20022107,
+      20022108,
+      20022109,
+      20022110
+    ]
+  },
+  {
+    "slotTemplateId": "verdant_oracle_x3",
+    "name": "森语真实因子X3, 7s 内荆棘可以触发幸运一击",
+    "description": "7s 内荆棘可以触发幸运一击",
+    "slot": {
+      "threshold": 500,
+      "resetBuffId": 3056401,
+      "onBuffAdd": "reset",
+      "onBuffChange": "noOp",
+      "onBuffRemove": "noOp"
+    },
+    "effectBuffIds": [
+      3056401
+    ],
+    "itemIds": [
+      20022111,
+      20022112,
+      20022113,
+      20022114,
+      20022115,
+      20022116,
+      20022117,
+      20022118,
+      20022119,
+      20022120
+    ]
+  }
+]

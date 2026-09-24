@@ -1,0 +1,422 @@
+[
+  {
+    "sourceId": "stormablade_x1",
+    "name": "ストームブレイド X1、雷刃抜刀を発動すると虚妄エネルギーを25pt獲得",
+    "description": "雷刃抜刀を発動すると虚妄エネルギーを25pt獲得"
+  },
+  {
+    "sourceId": "stormablade_x2",
+    "name": "ストームブレイド X2、一閃または飛雷を発動すると虚妄エネルギーを24pt獲得",
+    "description": "一閃または飛雷を発動すると虚妄エネルギーを24pt獲得"
+  },
+  {
+    "sourceId": "stormablade_s3_x3",
+    "name": "ストームブレイド X3、墜竜閃または瞬影斬を発動すると虚妄エネルギーを24pt獲得",
+    "description": "墜竜閃または瞬影斬を発動すると虚妄エネルギーを24pt獲得"
+  },
+  {
+    "sourceId": "stormablade_x4",
+    "name": "ストームブレイド X4、雷閃を発動すると虚妄エネルギーを120pt獲得",
+    "description": "雷閃を発動すると虚妄エネルギーを120pt獲得"
+  },
+  {
+    "sourceId": "stormablade_x5",
+    "name": "ストームブレイド X5、無窮雷陣中は毎秒虚妄エネルギーを26pt獲得",
+    "description": "無窮雷陣中は毎秒虚妄エネルギーを26pt獲得"
+  },
+  {
+    "sourceId": "stormablade_s3_x6",
+    "name": "ストームブレイド X6、迅雷連斬または霹靂墜斬を発動すると虚妄エネルギーを16pt獲得",
+    "description": "迅雷連斬または霹靂墜斬を発動すると虚妄エネルギーを16pt獲得"
+  },
+  {
+    "sourceId": "stormablade_x7",
+    "name": "ストームブレイド X7、電禍を10消費するごとに虚妄エネルギーを12pt獲得",
+    "description": "電禍を10消費するごとに虚妄エネルギーを12pt獲得"
+  },
+  {
+    "sourceId": "stormablade_x8",
+    "name": "ストームブレイド X8、戦闘中に静止している間、毎秒虚妄エネルギーを12pt獲得",
+    "description": "戦闘中に静止している間、毎秒虚妄エネルギーを12pt獲得"
+  },
+  {
+    "sourceId": "stormablade_s3_x9",
+    "name": "ストームブレイド X9、月影殺を発動すると虚妄エネルギーを29pt獲得",
+    "description": "月影殺を発動すると虚妄エネルギーを29pt獲得"
+  },
+  {
+    "sourceId": "stormablade_s3_x10",
+    "name": "ストームブレイド X10、千雷中は毎秒虚妄エネルギーを20pt獲得",
+    "description": "千雷中は毎秒虚妄エネルギーを20pt獲得"
+  },
+  {
+    "sourceId": "wind_knight_x7",
+    "name": "ゲイルランサー X7、鋭利を5消費するごとに虚妄エネルギーを12pt獲得",
+    "description": "鋭利を5消費するごとに虚妄エネルギーを12pt獲得"
+  },
+  {
+    "sourceId": "wind_knight_x8",
+    "name": "ゲイルランサー X8、戦闘中に5m移動するごとに虚妄エネルギーを10pt獲得",
+    "description": "戦闘中に5m移動するごとに虚妄エネルギーを10pt獲得"
+  },
+  {
+    "sourceId": "wind_knight_x9",
+    "name": "ゲイルランサー X9、竜巻のダメージで虚妄エネルギーを21pt獲得",
+    "description": "竜巻のダメージで虚妄エネルギーを21pt獲得"
+  },
+  {
+    "sourceId": "wind_knight_s3_x1",
+    "name": "ゲイルランサー X1、勇心風環のダメージで虚妄エネルギーを4pt獲得",
+    "description": "勇心風環のダメージで虚妄エネルギーを4pt獲得"
+  },
+  {
+    "sourceId": "wind_knight_s3_x2",
+    "name": "ゲイルランサー X2、螺旋撃または破追を発動すると虚妄エネルギーを32pt獲得",
+    "description": "螺旋撃または破追を発動すると虚妄エネルギーを32pt獲得"
+  },
+  {
+    "sourceId": "wind_knight_s3_x3",
+    "name": "ゲイルランサー X3、瞬影螺旋のダメージで虚妄エネルギーを33pt獲得",
+    "description": "瞬影螺旋のダメージで虚妄エネルギーを33pt獲得"
+  },
+  {
+    "sourceId": "wind_knight_s3_x4",
+    "name": "ゲイルランサー X4、龍撃陣のダメージで虚妄エネルギーを33pt獲得",
+    "description": "龍撃陣のダメージで虚妄エネルギーを33pt獲得"
+  },
+  {
+    "sourceId": "wind_knight_s3_x6",
+    "name": "ゲイルランサー X6、風姿卓絶中は毎秒虚妄エネルギーを8pt獲得",
+    "description": "風姿卓絶中は毎秒虚妄エネルギーを8pt獲得"
+  },
+  {
+    "sourceId": "wind_knight_s3_x10",
+    "name": "ゲイルランサー X10、飛鳥投または嵐斬を発動すると虚妄エネルギーを46pt獲得",
+    "description": "飛鳥投または嵐斬を発動すると虚妄エネルギーを46pt獲得"
+  },
+  {
+    "sourceId": "wind_knight_s3_x11",
+    "name": "ゲイルランサー X11、鋭利衝を発動すると虚妄エネルギーを200pt獲得",
+    "description": "鋭利衝を発動すると虚妄エネルギーを200pt獲得"
+  },
+  {
+    "sourceId": "flame_berserker_x1",
+    "name": "ツインストライカー X1、イラプションのダメージで虚妄エネルギーを3pt獲得",
+    "description": "イラプションのダメージで虚妄エネルギーを3pt獲得"
+  },
+  {
+    "sourceId": "flame_berserker_x2",
+    "name": "ツインストライカー X2、ラースアクスを発動すると虚妄エネルギーを54pt獲得",
+    "description": "ラースアクスを発動すると虚妄エネルギーを54pt獲得"
+  },
+  {
+    "sourceId": "flame_berserker_s3_x3",
+    "name": "ツインストライカー X3、アクススパイラル中は0.5秒ごとに虚妄エネルギーを11pt獲得",
+    "description": "アクススパイラル中は0.5秒ごとに虚妄エネルギーを11pt獲得"
+  },
+  {
+    "sourceId": "flame_berserker_x4",
+    "name": "ツインストライカー X4、バーニングギア中は毎秒虚妄エネルギーを20pt獲得",
+    "description": "バーニングギア中は毎秒虚妄エネルギーを20pt獲得"
+  },
+  {
+    "sourceId": "flame_berserker_s3_x6",
+    "name": "ツインストライカー X6、バーニングラッシュ中は0.5秒ごとに虚妄エネルギーを6pt獲得",
+    "description": "バーニングラッシュ中は0.5秒ごとに虚妄エネルギーを6pt獲得"
+  },
+  {
+    "sourceId": "flame_berserker_s3_x7",
+    "name": "ツインストライカー X7、バーニングクロスを発動すると虚妄エネルギーを25pt獲得",
+    "description": "バーニングクロスを発動すると虚妄エネルギーを25pt獲得"
+  },
+  {
+    "sourceId": "flame_berserker_x8",
+    "name": "ツインストライカー X8、ラーヴァインパクトまたはクリムゾンインパクトを発動すると虚妄エネルギーを47pt獲得",
+    "description": "ラーヴァインパクトまたはクリムゾンインパクトを発動すると虚妄エネルギーを47pt獲得"
+  },
+  {
+    "sourceId": "flame_berserker_x9",
+    "name": "ツインストライカー X9、フレイムスピンのダメージで虚妄エネルギーを37pt獲得",
+    "description": "フレイムスピンのダメージで虚妄エネルギーを37pt獲得"
+  },
+  {
+    "sourceId": "flame_berserker_s3_x10",
+    "name": "ツインストライカー X10、戦闘中に静止している間、毎秒虚妄エネルギーを12pt獲得",
+    "description": "戦闘中に静止している間、毎秒虚妄エネルギーを12pt獲得"
+  },
+  {
+    "sourceId": "flame_berserker_s3_x11",
+    "name": "ツインストライカー X11、霊火を50消費するごとに虚妄エネルギーを24pt獲得",
+    "description": "霊火を50消費するごとに虚妄エネルギーを24pt獲得"
+  },
+  {
+    "sourceId": "beat_performer_s3_x1",
+    "name": "ビートパフォーマー X1、ハードディストーションを発動すると虚妄エネルギーを36pt獲得",
+    "description": "ハードディストーションを発動すると虚妄エネルギーを36pt獲得"
+  },
+  {
+    "sourceId": "beat_performer_s3_x2",
+    "name": "ビートパフォーマー X2、ハーモニックアンセムを発動すると虚妄エネルギーを60pt獲得",
+    "description": "ハーモニックアンセムを発動すると虚妄エネルギーを60pt獲得"
+  },
+  {
+    "sourceId": "beat_performer_s3_x3",
+    "name": "ビートパフォーマー X3、フレイムラプソディーを発動すると虚妄エネルギーを44pt獲得",
+    "description": "フレイムラプソディーを発動すると虚妄エネルギーを44pt獲得"
+  },
+  {
+    "sourceId": "beat_performer_s3_x4",
+    "name": "ビートパフォーマー X4、ブレイブメロディー発動中は毎秒虚妄エネルギーを8pt獲得",
+    "description": "ブレイブメロディー発動中は毎秒虚妄エネルギーを8pt獲得"
+  },
+  {
+    "sourceId": "beat_performer_x5",
+    "name": "ビートパフォーマー X5、パッショネートまたはレイジパッショネートを発動すると虚妄エネルギーを50pt獲得",
+    "description": "パッショネートまたはレイジパッショネートを発動すると虚妄エネルギーを50pt獲得"
+  },
+  {
+    "sourceId": "beat_performer_s3_x6",
+    "name": "ビートパフォーマー X6、アンコールを発動すると虚妄エネルギーを300pt獲得",
+    "description": "アンコールを発動すると虚妄エネルギーを300pt獲得"
+  },
+  {
+    "sourceId": "beat_performer_s3_x7",
+    "name": "ビートパフォーマー X7、烈炎音符のダメージで虚妄エネルギーを15pt獲得",
+    "description": "烈炎音符のダメージで虚妄エネルギーを15pt獲得"
+  },
+  {
+    "sourceId": "beat_performer_x9",
+    "name": "ビートパフォーマー X9、ヒーリングメロディー発動中は毎秒虚妄エネルギーを8pt獲得",
+    "description": "ヒーリングメロディー発動中は毎秒虚妄エネルギーを8pt獲得"
+  },
+  {
+    "sourceId": "beat_performer_x10",
+    "name": "ビートパフォーマー X10、戦闘中に静止している間、毎秒虚妄エネルギーを12pt獲得",
+    "description": "戦闘中に静止している間、毎秒虚妄エネルギーを12pt獲得"
+  },
+  {
+    "sourceId": "beat_performer_x11",
+    "name": "ビートパフォーマー X11、サージクインテットを発動すると虚妄エネルギーを150pt獲得",
+    "description": "サージクインテットを発動すると虚妄エネルギーを150pt獲得"
+  },
+  {
+    "sourceId": "marksman_x1",
+    "name": "ディバインアーチャー X1、ハウリングボルトを発動すると虚妄エネルギーを5pt獲得",
+    "description": "ハウリングボルトを発動すると虚妄エネルギーを5pt獲得"
+  },
+  {
+    "sourceId": "marksman_x2",
+    "name": "ディバインアーチャー X2、アローレインを発動すると虚妄エネルギーを150pt獲得",
+    "description": "アローレインを発動すると虚妄エネルギーを150pt獲得"
+  },
+  {
+    "sourceId": "marksman_x3",
+    "name": "ディバインアーチャー X3、臣狼のダメージで虚妄エネルギーを4pt獲得",
+    "description": "臣狼のダメージで虚妄エネルギーを4pt獲得"
+  },
+  {
+    "sourceId": "marksman_x4",
+    "name": "ディバインアーチャー X4、閃追矢のダメージで虚妄エネルギーを4pt獲得",
+    "description": "閃追矢のダメージで虚妄エネルギーを4pt獲得"
+  },
+  {
+    "sourceId": "marksman_s3_x5",
+    "name": "ディバインアーチャー X5、ストライクボルトを発動すると虚妄エネルギーを27pt獲得",
+    "description": "ストライクボルトを発動すると虚妄エネルギーを27pt獲得"
+  },
+  {
+    "sourceId": "marksman_x7",
+    "name": "ディバインアーチャー X7、雷撃衝撃のダメージで虚妄エネルギーを51pt獲得",
+    "description": "雷撃衝撃のダメージで虚妄エネルギーを51pt獲得"
+  },
+  {
+    "sourceId": "marksman_s3_x8",
+    "name": "ディバインアーチャー X8、レイジショットのダメージで虚妄エネルギーを9pt獲得",
+    "description": "レイジショットのダメージで虚妄エネルギーを9pt獲得"
+  },
+  {
+    "sourceId": "marksman_x9",
+    "name": "ディバインアーチャー X9、エナジーショットのダメージで虚妄エネルギーを30pt獲得",
+    "description": "エナジーショットのダメージで虚妄エネルギーを30pt獲得"
+  },
+  {
+    "sourceId": "marksman_s3_x10",
+    "name": "ディバインアーチャー X10、ブラストショットを発動すると虚妄エネルギーを92pt獲得",
+    "description": "ブラストショットを発動すると虚妄エネルギーを92pt獲得"
+  },
+  {
+    "sourceId": "marksman_x11",
+    "name": "ディバインアーチャー X11、チャージショットを発動すると虚妄エネルギーを40pt獲得",
+    "description": "チャージショットを発動すると虚妄エネルギーを40pt獲得"
+  },
+  {
+    "sourceId": "frost_mage_x1",
+    "name": "フロストメイジ X1、フロストファングを発動すると虚妄エネルギーを12pt獲得",
+    "description": "フロストファングを発動すると虚妄エネルギーを12pt獲得"
+  },
+  {
+    "sourceId": "frost_mage_x2",
+    "name": "フロストメイジ X2、メテオストームの発動、またはフロストファングで会心と幸運の一撃が同時発生すると虚妄エネルギーを44pt獲得",
+    "description": "メテオストームの発動、またはフロストファングで会心と幸運の一撃が同時発生すると虚妄エネルギーを44pt獲得"
+  },
+  {
+    "sourceId": "frost_mage_x3",
+    "name": "フロストメイジ X3、氷矢が5回命中するごとに虚妄エネルギーを8pt獲得",
+    "description": "氷矢が5回命中するごとに虚妄エネルギーを8pt獲得"
+  },
+  {
+    "sourceId": "frost_mage_x4",
+    "name": "フロストメイジ X4、貫通氷槍または氷慧のダメージで虚妄エネルギーを24pt獲得",
+    "description": "貫通氷槍または氷慧のダメージで虚妄エネルギーを24pt獲得"
+  },
+  {
+    "sourceId": "frost_mage_s3_x5",
+    "name": "フロストメイジ X5、ブリザードのダメージで虚妄エネルギーを2pt獲得",
+    "description": "ブリザードのダメージで虚妄エネルギーを2pt獲得（複数対象に命中しても1回のみ発動）"
+  },
+  {
+    "sourceId": "frost_mage_x6",
+    "name": "フロストメイジ X6、フロストレイ発動中は毎秒虚妄エネルギーを10pt獲得",
+    "description": "フロストレイ発動中は毎秒虚妄エネルギーを10pt獲得"
+  },
+  {
+    "sourceId": "frost_mage_x7",
+    "name": "フロストメイジ X7、タイドプールのダメージで虚妄エネルギーを10pt獲得",
+    "description": "タイドプールのダメージで虚妄エネルギーを10pt獲得"
+  },
+  {
+    "sourceId": "frost_mage_s3_x9",
+    "name": "フロストメイジ X9、フローズンストームのダメージで虚妄エネルギーを48pt獲得",
+    "description": "フローズンストームのダメージで虚妄エネルギーを48pt獲得"
+  },
+  {
+    "sourceId": "frost_mage_x10",
+    "name": "フロストメイジ X10、パーマフロストを発動すると虚妄エネルギーを400pt獲得",
+    "description": "パーマフロストを発動すると虚妄エネルギーを400pt獲得"
+  },
+  {
+    "sourceId": "holy_shield_x1",
+    "name": "シールドファイター X1、ブレイヴバッシュを発動すると虚妄エネルギーを26pt獲得",
+    "description": "ブレイヴバッシュを発動すると虚妄エネルギーを26pt獲得"
+  },
+  {
+    "sourceId": "holy_shield_x3",
+    "name": "シールドファイター X3、マスタリースキルを発動すると虚妄エネルギーを9pt獲得",
+    "description": "マスタリースキルを発動すると虚妄エネルギーを9pt獲得"
+  },
+  {
+    "sourceId": "holy_shield_x4",
+    "name": "シールドファイター X4、ホーリーリング内で静止している間、毎秒虚妄エネルギーを12pt獲得",
+    "description": "ホーリーリング内で静止している間、毎秒虚妄エネルギーを12pt獲得"
+  },
+  {
+    "sourceId": "holy_shield_x5",
+    "name": "シールドファイター X5、ホーリーガード中は毎秒虚妄エネルギーを30pt獲得",
+    "description": "ホーリーガード中は毎秒虚妄エネルギーを30pt獲得"
+  },
+  {
+    "sourceId": "holy_shield_x6",
+    "name": "シールドファイター X6、光凛・レイディアントフォースを発動すると虚妄エネルギーを300pt獲得",
+    "description": "光凛・レイディアントフォースを発動すると虚妄エネルギーを300pt獲得"
+  },
+  {
+    "sourceId": "holy_shield_x7",
+    "name": "シールドファイター X7、光力を消費するごとに虚妄エネルギーを7pt獲得",
+    "description": "光力を消費するごとに虚妄エネルギーを7pt獲得"
+  },
+  {
+    "sourceId": "holy_shield_x8",
+    "name": "シールドファイター X8、ホーリーソードを発動すると虚妄エネルギーを37pt獲得",
+    "description": "ホーリーソードを発動すると虚妄エネルギーを37pt獲得"
+  },
+  {
+    "sourceId": "holy_shield_s3_x9",
+    "name": "シールドファイター X9、戦闘中に静止している間、毎秒虚妄エネルギーを12pt獲得",
+    "description": "戦闘中に静止している間、毎秒虚妄エネルギーを12pt獲得"
+  },
+  {
+    "sourceId": "holy_shield_x10",
+    "name": "シールドファイター X10、セイクリッドオース中は毎秒虚妄エネルギーを8pt獲得",
+    "description": "セイクリッドオース中は毎秒虚妄エネルギーを8pt獲得"
+  },
+  {
+    "sourceId": "holy_shield_x11",
+    "name": "シールドファイター X11、ホーリーリング内で静止している間、毎秒虚妄エネルギーを12pt獲得",
+    "description": "ホーリーリング内で静止している間、毎秒虚妄エネルギーを12pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_x1",
+    "name": "ヘヴィガーディアン X1、砕刃の猛撃中は毎秒虚妄エネルギーを8pt獲得",
+    "description": "砕刃の猛撃中は毎秒虚妄エネルギーを8pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_x2",
+    "name": "ヘヴィガーディアン X2、砕刃の猛撃を発動すると虚妄エネルギーを21pt獲得",
+    "description": "砕刃の猛撃を発動すると虚妄エネルギーを21pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_x3",
+    "name": "ヘヴィガーディアン X3、憤怒の剛撃または地崩の山摧を発動すると虚妄エネルギーを42pt獲得",
+    "description": "憤怒の剛撃または地崩の山摧を発動すると虚妄エネルギーを42pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_x4",
+    "name": "ヘヴィガーディアン X4、砂岩握を発動すると虚妄エネルギーを400pt獲得",
+    "description": "砂岩握を発動すると虚妄エネルギーを400pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_x5",
+    "name": "ヘヴィガーディアン X5、究極スキルを発動すると虚妄エネルギーを600pt獲得",
+    "description": "究極スキルを発動すると虚妄エネルギーを600pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_x6",
+    "name": "ヘヴィガーディアン X6、護刃の衝撃中は毎秒虚妄エネルギーを9pt獲得",
+    "description": "護刃の衝撃中は毎秒虚妄エネルギーを9pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_x7",
+    "name": "ヘヴィガーディアン X7、岩塊撃または巨岩の轟撃を発動すると虚妄エネルギーを38pt獲得",
+    "description": "岩塊撃または巨岩の轟撃を発動すると虚妄エネルギーを38pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_s3_x8",
+    "name": "ヘヴィガーディアン X8、レジスト成功で虚妄エネルギーを3pt獲得",
+    "description": "レジスト成功で虚妄エネルギーを3pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_s3_x9",
+    "name": "ヘヴィガーディアン X9、レジスト成功で虚妄エネルギーを3pt獲得",
+    "description": "レジスト成功で虚妄エネルギーを3pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_x10",
+    "name": "ヘヴィガーディアン X10、レジスト反撃発動で虚妄エネルギーを7pt獲得",
+    "description": "レジスト反撃発動で虚妄エネルギーを7pt獲得"
+  },
+  {
+    "sourceId": "giant_blade_x11",
+    "name": "ヘヴィガーディアン X11、岩心を獲得すると虚妄エネルギーを153pt獲得",
+    "description": "岩心を獲得すると虚妄エネルギーを153pt獲得"
+  },
+  {
+    "sourceId": "verdant_oracle_x2",
+    "name": "ヴァーダントオラクル X2、インフュージョンのダメージで虚妄エネルギーを6pt獲得",
+    "description": "インフュージョンのダメージで虚妄エネルギーを6pt獲得"
+  },
+  {
+    "sourceId": "verdant_oracle_x3",
+    "name": "ヴァーダントオラクル X3、リジェネイトパルスまたは波動の息吹で虚妄エネルギーを獲得",
+    "description": "リジェネイトパルスまたは波動の息吹で虚妄エネルギーを獲得"
+  },
+  {
+    "sourceId": "verdant_oracle_x5",
+    "name": "ヴァーダントオラクル X5、フェラルシードを発動すると虚妄エネルギーを200pt獲得",
+    "description": "フェラルシードを発動すると虚妄エネルギーを200pt獲得"
+  },
+  {
+    "sourceId": "verdant_oracle_x11",
+    "name": "ヴァーダントオラクル X11、幸運の一撃ダメージで虚妄エネルギーを7pt獲得",
+    "description": "幸運の一撃ダメージで虚妄エネルギーを7pt獲得"
+  }
+]
