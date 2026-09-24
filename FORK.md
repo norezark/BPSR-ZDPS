@@ -58,5 +58,14 @@ README先頭のフォーク説明とCIの対象ブランチを保持して競合
 `main` へのpushと、`main` を対象にしたPull Requestで、GitHub ActionsがWindows x64向けのビルドを確認します。
 成果物はActionsの `BPSR-ZDPS-main-win-x64` に保存します。上流と同様に、実行には.NET 9ランタイムとNpcapが必要です。
 
-`main` は上流ZDPSのMIT本文をそのまま保持しています。
-個別機能では移植元に応じて配布条件が異なる場合があるため、該当ブランチの `LICENSE` と説明を参照してください。
+ライセンスは、対象のソース・配布物に合わせて記載しています。
+
+| 対象 | 配布条件 |
+|---|---|
+| `main` / `master` | 上流ZDPSのMIT本文を保持しています。AGPLの移植実装・定義データを含まない版です。 |
+| `feature/illusion-energy` / `v0.1.7.5-illusion.1` | resonance-logs-cn由来の実装・定義データを含む改造版全体をAGPL-3.0-onlyで配布します。上流ZDPS由来部分のMIT表記を `LICENSES/BPSR-ZDPS-MIT.txt` に保持しています。 |
+
+虚妄エネルギー対応版の根拠とクレジットは、その版の
+[THIRD-PARTY-NOTICES.md](https://github.com/norezark/BPSR-ZDPS/blob/v0.1.7.5-illusion.1/THIRD-PARTY-NOTICES.md) を参照してください。
+`main` のMIT表記を、別ブランチのAGPL移植内容や配布ZIPへ適用することは意図していません。
+今後その機能を `main` に統合する場合は、統合後の配布物に合わせて `LICENSE` とこの説明も更新します。

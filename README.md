@@ -12,7 +12,12 @@
 
 ブランチの役割や上流の更新手順は [FORK.md](FORK.md) にまとめています。このフォークへの報告は [Issues](https://github.com/norezark/BPSR-ZDPS/issues) へお願いします。
 
-`main` のライセンスは上流と同じ [MIT](LICENSE) です。個別機能のライセンス・クレジット・対応範囲は、各ブランチの説明を参照してください。
+ライセンスの対象は次のとおりです。
+
+- **`main` / `master` の上流ZDPSを基にした版：[MIT](LICENSE)**。虚妄エネルギーの移植実装・定義データは含みません。
+- **`feature/illusion-energy` と配布版 `v0.1.7.5-illusion.1`：[AGPL-3.0-only](https://github.com/norezark/BPSR-ZDPS/blob/v0.1.7.5-illusion.1/LICENSE)**。resonance-logs-cn由来の実装・定義データを含む改造版全体の配布条件です。ZDPS由来部分のMIT表記も[保持しています](https://github.com/norezark/BPSR-ZDPS/blob/v0.1.7.5-illusion.1/LICENSES/BPSR-ZDPS-MIT.txt)。
+
+このページのMIT表記は、虚妄エネルギー対応版をMITで配布するという意味ではありません。各機能の対応範囲・クレジットは、該当ブランチの説明を参照してください。
 
 ---
 
