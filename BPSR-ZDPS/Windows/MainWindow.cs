@@ -69,6 +69,7 @@ namespace BPSR_ZDPS.Windows
             ChatWindow.Draw(this);
             EventTrackerWindow.Draw(this);
             SkillCastTimelineWindow.Draw(this);
+            Features.FactorEnergy.FactorEnergyWindow.Draw();
         }
 
         static bool p_open = true;
@@ -592,6 +593,11 @@ namespace BPSR_ZDPS.Windows
                         if (ImGui.MenuItem(AppStrings.GetLocalized("FeaturesMenu_RaidManager_SkillCastTimeline")))
                         {
                             SkillCastTimelineWindow.Open();
+                        }
+
+                        if (ImGui.MenuItem("Illusion Energy"))
+                        {
+                            Features.FactorEnergy.FactorEnergyWindow.Open();
                         }
 
                         ImGui.EndMenu();

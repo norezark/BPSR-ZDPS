@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../BPSR-ZDPSLib/BPSR-ZDPSLib.csproj" />
+    <Compile Include="../../BPSR-ZDPS/Features/FactorEnergy/Core/*.cs" Link="Core/%(Filename)%(Extension)" />
+    <Compile Include="../../BPSR-ZDPS/Features/FactorEnergy/Protocol/*.cs" Link="Protocol/%(Filename)%(Extension)" />
+    <None Include="../../BPSR-ZDPS/Data/FactorEnergy/**/*.json" Link="Data/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

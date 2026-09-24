@@ -30,6 +30,9 @@ public class NetCap
     private ConcurrentDictionary<uint, ProxyId> ProxyReturnsDictionary = new();
     private Action<NotifyId, ReadOnlySpan<byte>, ExtraPacketData>? UnhandledHandler = null;
     private Action<ProxyId, ReadOnlySpan<byte>, ExtraPacketData>? UnhandledProxyHandler = null;
+    // Read-only observers let optional features consume packets without replacing DPS handlers.
+    public event Action<NotifyId, ReadOnlySpan<byte>, ExtraPacketData>? NotifyObserved;
+    public event Action<ProxyId, ReadOnlySpan<byte>, ExtraPacketData>? ProxyObserved;
     public ulong NumSeenPackets = 0;
     public DateTime LastPacketSeenAt = DateTime.MinValue;
     public int NumConnectionReaders = 0;
@@ -310,7 +313,8 @@ public class NetCap
             var decompressed = Decompress(data[4..]);
             if (!decompressed.IsEmpty)
             {
-                ParsePacket(decompressed, lastPacketTime);
+                // Nested compressed packets must not overwrite the outer frame's scratch-buffer slice.
+                ParsePacket(decompressed.ToArray(), lastPacketTime);
             }
         }
         else
@@ -354,6 +358,7 @@ public class NetCap
         }
 
         var id = new NotifyId(serviceUuid, methodId);
+        NotifyObserved?.Invoke(id, msgData, new ExtraPacketData(lastPacketTime));
         if (NotifyHandlers.TryGetValue(id, out var handler))
         {
             var extraData = new ExtraPacketData(lastPacketTime);
@@ -372,7 +377,7 @@ public class NetCap
     {
         //byte[] debugHeaders = data.ToArray();
 
-        if (data.Length < 16)
+        if (data.Length < 20)
         {
             return;
         }
@@ -382,6 +387,11 @@ public class NetCap
         var returnUid = BinaryPrimitives.ReadUInt32BigEndian(data[12..]);
         var proxyMethodId = BinaryPrimitives.ReadUInt32BigEndian(data[16..]);
         var msgData = data[20..];
+        if (isCompressed)
+        {
+            msgData = Decompress(msgData);
+            if (msgData.IsEmpty) return;
+        }
 
         ProxyReturnsDictionary.AddOrUpdate(returnUid, new ProxyId((uint)proxyServiceId, proxyMethodId), (key, value) => new ProxyId((uint)proxyServiceId, proxyMethodId));
 
@@ -401,6 +411,7 @@ public class NetCap
         //Log.Logger.Information($"ParseCall: I:{proxyServiceId} S:{subId} R:{returnUid} M:{proxyMethodId} Len={data.Length} IsCompressed={isCompressed}{(loggedMsg.Length > 0 ? $"\nData: [{loggedMsg}]" : "")}");
 
         var id = new ProxyId((uint)proxyServiceId, proxyMethodId);
+        ProxyObserved?.Invoke(id, msgData, new ExtraPacketData(lastPacketTime));
         if (ProxyHandlers.TryGetValue(id, out var handler))
         {
             var extraData = new ExtraPacketData(lastPacketTime);
@@ -415,6 +426,12 @@ public class NetCap
 
     private void ParseFrameUp(ReadOnlySpan<byte> data, bool isCompressed, DateTime lastPacketTime)
     {
+        if (isCompressed)
+        {
+            // FrameUp and FrameDown both prefix their nested packets with a four-byte sequence.
+            ParseFrameDown(data, true, lastPacketTime);
+            return;
+        }
         //byte[] debugHeaders = data.ToArray();
 
         if (data.Length < 26)
@@ -457,6 +474,7 @@ public class NetCap
                 //Log.Logger.Information($"ParseFrameUp: U:{uuid} L:{length} F:{flags} P0:{padding0} I:{proxyServiceId} R:{returnUid} M:{proxyMethodId} MsgDataLen={msgData.Length} Len={data.Length} IsCompressed={isCompressed}");
 
                 var id = new ProxyId(proxyServiceId, proxyMethodId);
+                ProxyObserved?.Invoke(id, msgData, new ExtraPacketData(lastPacketTime));
                 if (ProxyHandlers.TryGetValue(id, out var handler))
                 {
                     var extraData = new ExtraPacketData(lastPacketTime);
@@ -494,6 +512,7 @@ public class NetCap
                 //Log.Logger.Information($"ParseFrameUp: U:{uuid} L:{length} F:{flags} P0:{padding0} I:{proxyServiceId} P1:{padding1} R:{returnUid} M:{proxyMethodId} Len={data.Length} IsCompressed={isCompressed}");
 
                 var id = new ProxyId(proxyServiceId, proxyMethodId);
+                ProxyObserved?.Invoke(id, msgData, new ExtraPacketData(lastPacketTime));
                 if (ProxyHandlers.TryGetValue(id, out var handler))
                 {
                     var extraData = new ExtraPacketData(lastPacketTime);
