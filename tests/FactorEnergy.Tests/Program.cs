@@ -410,5 +410,87 @@ Test("NetCap: FrameUp variants and nested compression preserve outbound payloads
     Equal(4, calls);
 });
 
+Test("regression: omitted move-state value is zero and does not lose character sync", () =>
+{
+    var p = Protocol(20020001, 20021731);
+    p.UseSlot(Skill(1714), 1);
+    var mine = new WorldNtfCsharp.Types.SyncToMeDeltaInfo { DeltaInfo = new()
+        { Uuid = p.LocalUuid, BaseDelta = new() { Uuid = p.LocalUuid, Attrs = new() } } };
+    // Real server notifications may omit rawData for a zero integer value.
+    mine.DeltaInfo.BaseDelta.Attrs.Attrs.Add(new Attr { Id = 71 });
+    p.Notify(WorldNtf.SyncToMeDeltaInfo, mine.ToByteArray(), 2);
+    Check(p.HasSnapshot); Check(p.Error == null); Equal(25u, Count(p.Engine));
+    p.UseSlot(Skill(1714), 3); Equal(50u, Count(p.Engine));
+});
+
+Test("regression: omitted zero changes movement state instead of keeping a stale moving value", () =>
+{
+    var p = Protocol(20020071, 20021731); // stationary buff tick: +12 every second when attr 71 == 0
+    var delta = new AoiSyncDelta { Uuid = p.LocalUuid, Attrs = new(), BuffEffect = new() };
+    delta.Attrs.Attrs.Add(new Attr { Id = 71, RawData = ByteString.CopyFrom([1]) });
+    var buff = new BuffEffect { HostUuid = p.LocalUuid, BuffUuid = 9 };
+    buff.LogicEffect.Add(new BuffEffectLogicInfo { EffectType = EBuffEffectLogicPbType.BuffEffectAddBuff,
+        RawData = new BuffInfo { BaseId = 3051081, BuffUuid = 9, Duration = 5000 }.ToByteString() });
+    delta.BuffEffect.BuffEffects.Add(buff);
+    var mine = new WorldNtfCsharp.Types.SyncToMeDeltaInfo { DeltaInfo = new() { Uuid = p.LocalUuid, BaseDelta = delta } };
+    p.Notify(WorldNtf.SyncToMeDeltaInfo, mine.ToByteArray(), 1); Equal(0u, Count(p.Engine));
+    delta.BuffEffect = null; delta.Attrs.Attrs[0].RawData = ByteString.Empty;
+    p.Notify(WorldNtf.SyncToMeDeltaInfo, mine.ToByteArray(), 1001); Equal(12u, Count(p.Engine));
+    delta.Attrs.Attrs[0].RawData = ByteString.CopyFrom([0]);
+    p.Notify(WorldNtf.SyncToMeDeltaInfo, mine.ToByteArray(), 2001); Equal(24u, Count(p.Engine));
+    Check(p.HasSnapshot);
+});
+Test("optional attribute decoding matches donor defaults and ignores absent vectors/arrays", () =>
+{
+    Equal(0L, Wire.OptionalVarint([])); Equal(0L, Wire.OptionalVarint([0]));
+    Equal(300L, Wire.OptionalVarint([0xac, 0x02])); Equal(0L, Wire.OptionalVarint([0x80]));
+    Check(Wire.OptionalPacked([]) == null); Check(Wire.OptionalPacked([0x0a, 0x04, 1]) == null);
+    Check(Wire.OptionalPacked([0x0a, 1, 0x80]) == null); Check(Wire.OptionalPacked([0x12, 0]) == null);
+    Equal(0, Wire.OptionalPacked([0x0a, 0])!.Length);
+    Check(Wire.OptionalPacked([0x0a, 3, 1, 0xac, 0x02])!.SequenceEqual([1L, 300L]));
+    Check(Wire.OptionalPosition([]) == null); Check(Wire.OptionalPosition([0x80]) == null);
+    Check(Wire.OptionalPosition(new Zproto.Position { X = 5, Y = 5 }.ToByteArray()) == null);
+    // Explicit zero coordinates are valid, unlike omitted coordinates.
+    using var raw = new MemoryStream();
+    using (var w = new CodedOutputStream(raw, true))
+    {
+        w.WriteTag(13); w.WriteFloat(0); w.WriteTag(21); w.WriteFloat(0); w.WriteTag(29); w.WriteFloat(0);
+    }
+    Equal(Vector3.Zero, Wire.OptionalPosition(raw.ToArray())!.Value);
+});
+Test("optional malformed local attributes do not discard factors or following skill events", () =>
+{
+    var p = Protocol(20020001, 20021731); p.UseSlot(Skill(1714), 1);
+    var delta = new AoiSyncDelta { Uuid = p.LocalUuid, Attrs = new() };
+    foreach (int id in new[] { 71, 52, 50001, 50002 })
+    {
+        delta.Attrs.Attrs.Add(new Attr { Id = id });
+        delta.Attrs.Attrs.Add(new Attr { Id = id, RawData = ByteString.CopyFrom([0x80]) });
+    }
+    var mine = new WorldNtfCsharp.Types.SyncToMeDeltaInfo { DeltaInfo = new() { Uuid = p.LocalUuid, BaseDelta = delta } };
+    p.Notify(WorldNtf.SyncToMeDeltaInfo, mine.ToByteArray(), 2); Check(p.HasSnapshot); Equal(25u, Count(p.Engine));
+    p.UseSlot(Skill(1714), 3); Equal(50u, Count(p.Engine));
+});
+Test("omitted resource arrays keep layout and baseline until the next valid observation", () =>
+{
+    var p = Protocol(20020171, 20021731);
+    var delta = new AoiSyncDelta { Uuid = p.LocalUuid, Attrs = new() };
+    delta.Attrs.Attrs.Add(new Attr { Id = 50001, RawData = ByteString.CopyFrom([0x0a, 2, 0xb1, 0x6d]) }); // resource 14001
+    delta.Attrs.Attrs.Add(new Attr { Id = 50002, RawData = ByteString.CopyFrom([0x0a, 1, 10]) });
+    var mine = new WorldNtfCsharp.Types.SyncToMeDeltaInfo { DeltaInfo = new() { Uuid = p.LocalUuid, BaseDelta = delta } };
+    p.Notify(WorldNtf.SyncToMeDeltaInfo, mine.ToByteArray(), 1);
+    delta.Attrs.Attrs[0].RawData = ByteString.Empty; delta.Attrs.Attrs[1].RawData = ByteString.Empty;
+    p.Notify(WorldNtf.SyncToMeDeltaInfo, mine.ToByteArray(), 2); Equal(0u, Count(p.Engine));
+    delta.Attrs.Attrs[1].RawData = ByteString.CopyFrom([0x0a, 1, 5]);
+    p.Notify(WorldNtf.SyncToMeDeltaInfo, mine.ToByteArray(), 3); Equal(12u, Count(p.Engine)); Check(p.HasSnapshot);
+});
+Test("corrupted outer notification still fails instead of being mistaken for an optional attribute", () =>
+{
+    var p = Protocol(20020001, 20021731); bool rejected = false;
+    try { p.Notify(WorldNtf.SyncToMeDeltaInfo, [0x0a, 0x7f], 1); }
+    catch (InvalidProtocolBufferException) { rejected = true; }
+    Check(rejected);
+});
+
 Console.WriteLine($"\n{passed} passed, {failed} failed");
 return failed == 0 ? 0 : 1;

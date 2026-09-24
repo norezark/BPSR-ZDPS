@@ -171,12 +171,15 @@ public sealed class FactorProtocol(FactorCatalog catalog, Func<int, int, int?> s
             switch (attr.Id)
             {
                 case 52:
-                    var pos = Zproto.Position.Parser.ParseFrom(attr.RawData);
-                    Engine.Position(52, new Vector3(pos.X, pos.Y, pos.Z), snapshot);
+                    if (Wire.OptionalPosition(attr.RawData.Span) is { } position)
+                        Engine.Position(52, position, snapshot);
                     break;
-                case 71: Engine.Attribute(71, Wire.Varint(attr.RawData.Span)); break;
-                case 50001: resourceIds = Wire.Packed(attr.RawData.Span).Select(x => checked((int)x)).ToArray(); break;
-                case 50002: values = Wire.Packed(attr.RawData.Span); break;
+                case 71: Engine.Attribute(71, Wire.OptionalVarint(attr.RawData.Span)); break;
+                case 50001:
+                    if (Wire.OptionalPacked(attr.RawData.Span) is { } ids)
+                        resourceIds = ids.Where(x => x is >= int.MinValue and <= int.MaxValue).Select(x => (int)x).ToArray();
+                    break;
+                case 50002: values = Wire.OptionalPacked(attr.RawData.Span); break;
             }
         }
         if (values != null)
@@ -237,18 +240,45 @@ public static class Wire
         }
         return messages;
     }
-    public static long Varint(ReadOnlySpan<byte> bytes)
+    // Attribute rawData is optional. A missing/undecodable integer means zero in the donor decoder;
+    // an absent vector or resource array means no observation, not a broken character snapshot.
+    public static long OptionalVarint(ReadOnlySpan<byte> bytes)
     {
-        using var input = new CodedInputStream(bytes.ToArray());
-        return input.ReadInt64();
+        if (bytes.IsEmpty) return 0;
+        try
+        {
+            using var input = new CodedInputStream(bytes.ToArray());
+            return input.ReadInt64();
+        }
+        catch (InvalidProtocolBufferException) { return 0; }
     }
-    public static long[] Packed(ReadOnlySpan<byte> bytes)
+
+    public static Vector3? OptionalPosition(ReadOnlySpan<byte> bytes)
     {
-        using var input = new CodedInputStream(bytes.ToArray());
-        if (input.ReadTag() != 10) throw new InvalidDataException("Invalid resource array.");
-        using var packed = new CodedInputStream(input.ReadBytes().ToByteArray());
-        var values = new List<long>();
-        while (!packed.IsAtEnd) values.Add(packed.ReadInt64());
-        return values.ToArray();
+        if (bytes.IsEmpty) return null;
+        try
+        {
+            var fields = Fields(bytes);
+            if (!fields.Contains(Zproto.Position.XFieldNumber) || !fields.Contains(Zproto.Position.YFieldNumber)
+                || !fields.Contains(Zproto.Position.ZFieldNumber)) return null;
+            var pos = Zproto.Position.Parser.ParseFrom(bytes);
+            return new Vector3(pos.X, pos.Y, pos.Z);
+        }
+        catch (InvalidProtocolBufferException) { return null; }
+    }
+
+    public static long[]? OptionalPacked(ReadOnlySpan<byte> bytes)
+    {
+        if (bytes.IsEmpty) return null;
+        try
+        {
+            using var input = new CodedInputStream(bytes.ToArray());
+            if (input.ReadTag() != 10) return null;
+            using var packed = new CodedInputStream(input.ReadBytes().ToByteArray());
+            var values = new List<long>();
+            while (!packed.IsAtEnd) values.Add(packed.ReadInt64());
+            return values.ToArray();
+        }
+        catch (InvalidProtocolBufferException) { return null; }
     }
 }
