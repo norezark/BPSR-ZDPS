@@ -14,6 +14,7 @@ history is needed. Exit code zero means every assertion passed.
 Covered behavior:
 
 - Exact serialized payload and metadata survive shutdown/reopen; caller/read mutations do not
+- A literal semicolon-bearing database filename persists on disk and reopens; its text cannot become connection-string options
 - Per-channel display limits retain every archived row
 - Equal text and reused original game message IDs remain separate captured events
 - Retrying a stable event ID is idempotent, including after reopening; conflicting data is reported

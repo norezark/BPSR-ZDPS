@@ -178,7 +178,7 @@ internal static partial class Program
     private static async Task SeparateInstallationProfiles(bool identicalSettings)
     {
         string directory = Path.Combine(Path.GetTempPath(), "zdps-install-profiles-" + Guid.NewGuid().ToString("N"));
-        string installA = Path.Combine(directory, "install A;日本語"), installB = Path.Combine(directory, "install B");
+        string installA = Path.Combine(directory, "install A 日本語"), installB = Path.Combine(directory, "install B");
         string workingDirectory = Path.Combine(directory, "unrelated hostile cwd");
         string sharedHome = Path.Combine(directory, "shared user context");
         string token = Guid.NewGuid().ToString("N");

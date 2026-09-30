@@ -23,7 +23,7 @@ The suite checks:
   `ChatManager.InitializeHistory()` and real installation-relative `AppPaths`, without
   injecting a database path. Both use the same unrelated working directory and the
   same HOME/USERPROFILE/LOCALAPPDATA/APPDATA/XDG context; one installation path includes
-  spaces, a semicolon, and Japanese characters
+  spaces and Japanese characters
 - Both different-settings and byte-identical-settings scenarios, including a shared
   hypothetical copied profile ID, retain disjoint messages/senders and exact settings
   bytes. Timestamped independent capture intervals overlap. One process restarts and
@@ -89,3 +89,14 @@ to the automatic suite. They require a matching random guard token in a copied
 temporary installation before touching the production default path, and communicate
 with the parent using a line-based command protocol. Do not run them from a normal
 installation or manually create their guard files.
+
+## Windows executable-path boundary
+
+In Windows validation of this .NET 9 build, an executable directory containing a
+semicolon (`;`) failed before managed test code with CoreCLR error `0x80070057`,
+through both the native apphost and `dotnet suite.dll`. These process fixtures use
+space/Japanese directory names supported by that runtime; they do not claim that
+semicolon-containing executable directories work. Keep the installation/executor
+path free of semicolons. `ChatHistory.Tests` separately verifies a semicolon-bearing
+SQLite database filename, including connection-string-like text, using real on-disk
+write and reopen. The filename case does not require executing from that directory.

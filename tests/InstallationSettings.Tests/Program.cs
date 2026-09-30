@@ -38,7 +38,7 @@ internal static class Program
         Directory.CreateDirectory(root);
         try
         {
-            string a = Path.Combine(root, "copy A; 日本語");
+            string a = Path.Combine(root, "copy A 日本語");
             string b = Path.Combine(root, "copy B");
             string cwd = Path.Combine(root, "shared working directory");
             string home = Path.Combine(root, "shared user context");
@@ -126,7 +126,7 @@ internal static class Program
         Check(Path.GetFileName(root).StartsWith("zdps-real-settings-", StringComparison.Ordinal) &&
             Path.GetDirectoryName(root) == Path.TrimEndingDirectorySeparator(Path.GetTempPath()),
             "Fixture root must be a dedicated temporary test directory.");
-        string expectedInstall = Path.Combine(root, actor == "A" ? "copy A; 日本語" : "copy B");
+        string expectedInstall = Path.Combine(root, actor == "A" ? "copy A 日本語" : "copy B");
         Check(Path.TrimEndingDirectorySeparator(AppContext.BaseDirectory) == expectedInstall &&
             File.ReadAllText(Path.Combine(expectedInstall, Marker)) == actor, "Unsafe fixture location.");
         Check(Environment.CurrentDirectory == Path.Combine(root, "shared working directory"), "Unexpected CWD.");

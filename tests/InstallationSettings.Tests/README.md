@@ -17,7 +17,7 @@ different `AppContext.BaseDirectory` roots. Their synthetic `Data/Settings.json`
 files have distinct language, capture-device name, chat display cap, blocklist,
 window values, tab names/IDs, channel/level/regex filters and selected tab. They
 share a working directory with no Data directory and a synthetic user context.
-One installation path includes spaces, a semicolon and Japanese characters.
+One installation path includes spaces and Japanese characters.
 
 The test verifies:
 
@@ -43,3 +43,14 @@ linked-source harness stubs settings and tests many additional archive scenarios
 This suite proves real settings semantics; it does not exercise startup `Main`,
 native `ChatWindow` initialization/rendering, shortcuts, or Windows deployment.
 It adds saved tab configs to `ChatManager` explicitly, avoiding native UI execution.
+
+## Windows executable-path boundary
+
+In Windows validation of this .NET 9 build, an executable directory containing a
+semicolon (`;`) failed before managed test code with CoreCLR error `0x80070057`,
+through both the native apphost and `dotnet suite.dll`. These process fixtures use
+space/Japanese directory names supported by that runtime; they do not claim that
+semicolon-containing executable directories work. Keep the installation/executor
+path free of semicolons. `ChatHistory.Tests` separately verifies a semicolon-bearing
+SQLite database filename, including connection-string-like text, using real on-disk
+write and reopen. The filename case does not require executing from that directory.

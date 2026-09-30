@@ -57,8 +57,12 @@ internal static partial class Program
                 catch (InvalidOperationException exception)
                 {
                     rejected = true;
-                    Check(exception.Message.Contains(SettingsPath(installation), StringComparison.Ordinal), "The guard must identify installed settings.");
-                    Check(exception.Message.Contains(SettingsPath(workingDirectory), StringComparison.Ordinal), "The guard must identify old launch-folder settings.");
+                    Check(exception.Message.Contains(Path.Combine(installation, "Data"), StringComparison.Ordinal),
+                        "The guard must identify the installation's Data directory, including when Settings.json is absent.");
+                    Check(exception.Message.Contains(Path.Combine(workingDirectory, "Data"), StringComparison.Ordinal),
+                        "The guard must identify the old launch-folder Data directory, including auxiliary-data-only profiles.");
+                    Check(exception.Message.Contains("No settings or data were changed", StringComparison.Ordinal),
+                        "The guard must explain that it left both profiles unchanged.");
                 }
                 Check(rejected == rejects, "Unexpected settings-guard outcome: " + name);
                 Sequence(before, SnapshotTree(caseDirectory));

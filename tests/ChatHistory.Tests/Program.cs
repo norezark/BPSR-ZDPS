@@ -6,6 +6,7 @@ using System.Text;
 var tests = new (string Name, Func<Task> Run)[]
 {
     ("round-trip metadata and exact payload across reopen", RoundTrip),
+    ("semicolon database filename is literal and persists on disk", SemicolonDatabasePath),
     ("per-channel display cap never deletes persisted rows", DisplayCap),
     ("identical payloads and reused game IDs stay distinct", DistinctEvents),
     ("stable event retry is idempotent before/after reopen", IdempotentRetry),
@@ -116,6 +117,30 @@ static async Task RoundTrip()
     actual.Payload[0] = 12;
     Assert(Read(reopened).Single().Payload.SequenceEqual(expected), "Returned payload mutation changed stored data.");
     Assert(ChatHistoryStore.DefaultDatabasePath == Path.Combine(Path.GetFullPath(AppContext.BaseDirectory), "Data", "ChatHistory", "history.sqlite3"), "Default path must belong to this installation, not a shared user profile.");
+}
+
+static async Task SemicolonDatabasePath()
+{
+    using var directory = new TestDirectory();
+    // This is a database filename, not an executable location. Connection-string-like text
+    // must remain a literal filename rather than changing SQLite mode or cache settings.
+    string path = Path.Combine(directory.Path, "chat;Mode=Memory;Cache=Shared.sqlite3");
+    var entry = Entry(text: "semicolon filename survives a fresh connection");
+    using (var store = new ChatHistoryStore(path))
+    {
+        Assert(store.DatabasePath == Path.GetFullPath(path), "The database path was altered.");
+        Assert(store.Append(entry), "Append rejected.");
+        await Commit(store);
+        Assert(File.Exists(path), "The database must be created at the exact semicolon filename.");
+    }
+    using (var reopened = new ChatHistoryStore(path))
+    {
+        var restored = Read(reopened).Single();
+        Assert(restored.EventId == entry.EventId && restored.Payload.SequenceEqual(entry.Payload),
+            "Semicolons were interpreted as connection options or the stored event was lost.");
+    }
+    Assert(Count(path) == 1, "The exact on-disk database must retain its row after reopening.");
+    Assert(!File.Exists(Path.Combine(directory.Path, "chat")), "A truncated database filename was created.");
 }
 
 static async Task DisplayCap()
