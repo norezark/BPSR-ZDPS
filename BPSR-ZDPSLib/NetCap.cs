@@ -113,8 +113,13 @@ public class NetCap
 
     private void DeviceOnOnPacketArrival(object sender, PacketCapture e)
     {
+        var arrivalTimeUtc = DateTime.UtcNow;
         var rawPacket = e.GetPacket();
+        ProcessRawPacket(rawPacket, arrivalTimeUtc);
+    }
 
+    private void ProcessRawPacket(RawCapture rawPacket, DateTime arrivalTimeUtc)
+    {
         if (IsDebugCaptureFileMode)
         {
             if (LastDebugCapturePacketTime == DateTime.MinValue)
@@ -169,7 +174,10 @@ public class NetCap
         if (!allowed)
             return;
 
-        TcpReassempler.AddPacket(ipv4, tcpPacket, rawPacket.Timeval);
+        // Live capture timestamps can drift away from the UTC clock used by the UI.
+        // Timestamp at receipt, before reassembly/queueing, so that drift cannot consume
+        // a new buff's duration while genuine processing delays still count as elapsed.
+        TcpReassempler.AddPacket(ipv4, tcpPacket, new PosixTimeval(arrivalTimeUtc));
     }
 
     private void OnNewConnection(TcpReassembler.TcpConnection conn)

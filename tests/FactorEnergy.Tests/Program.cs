@@ -492,5 +492,7 @@ Test("corrupted outer notification still fails instead of being mistaken for an 
     Check(rejected);
 });
 
+CaptureTimingTests.Run(Test);
+
 Console.WriteLine($"\n{passed} passed, {failed} failed");
 return failed == 0 ? 0 : 1;
