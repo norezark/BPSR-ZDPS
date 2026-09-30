@@ -1,4 +1,4 @@
-﻿using BPSR_ZDPS.DataTypes;
+using BPSR_ZDPS.DataTypes;
 using BPSR_ZDPS.DataTypes.Chat;
 using BPSR_ZDPS.Managers;
 using Hexa.NET.ImGui;
@@ -373,9 +373,10 @@ namespace BPSR_ZDPS.Windows
                 ImGui.AlignTextToFramePadding();
                 ImGui.TextUnformatted("Hide stickers in chat:");
                 ImGui.SameLine();
-                ImGui.Checkbox("##HideStickers", ref hideStickers);
+                bool stickersChanged = ImGui.Checkbox("##HideStickers", ref hideStickers);
                 ImGui.SetItemTooltip("With this enabled stickers Ex. [Image(2001)] won't show in chat.");
                 chatWindowSettings.HideStickers = hideStickers;
+                if (stickersChanged) ChatManager.RefilterAllTabs();
 
                 ImGui.SameLine();
 
@@ -389,12 +390,13 @@ namespace BPSR_ZDPS.Windows
 
                 var maxChatHistory = Settings.Instance.Chat.MaxChatHistory;
                 ImGui.AlignTextToFramePadding();
-                ImGui.TextUnformatted("Max Chat History:");
+                ImGui.TextUnformatted("Messages shown per channel:");
                 ImGui.SameLine();
                 ImGui.PushStyleColor(ImGuiCol.FrameBgHovered, ImGui.GetColorU32(ImGuiCol.FrameBgHovered, 0.55f));
                 ImGui.PushStyleColor(ImGuiCol.FrameBgActive, ImGui.GetColorU32(ImGuiCol.FrameBgActive, 0.55f));
                 ImGui.SetNextItemWidth(200);
                 var wasMaxChatHistoryChanged = ImGui.SliderInt("##MaxChatHistory", ref maxChatHistory, 1, 500);
+                ImGui.SetItemTooltip("Display limit only. All captured chat messages remain saved locally and return when this limit is raised.");
                 Settings.Instance.Chat.MaxChatHistory = maxChatHistory;
                 ImGui.PopStyleColor(2);
 
@@ -402,6 +404,11 @@ namespace BPSR_ZDPS.Windows
                 {
                     ChatManager.RemoveMessagesOverCap(Settings.Instance.Chat.MaxChatHistory);
                 }
+
+                ImGui.TextWrapped("Chat history is saved locally without automatic deletion.");
+                var historyStatus = ChatManager.HistoryStatus;
+                if (historyStatus != null) ImGui.TextUnformatted(historyStatus.DatabasePath);
+                if (ImGui.Button("Reload saved chat history")) _ = ChatManager.ReloadHistoryAsync();
 
                 ImGui.Dummy(new Vector2(0, 5));
                 ImGui.Separator();
@@ -620,17 +627,32 @@ namespace BPSR_ZDPS.Windows
             var shouldScrollToBottom = true;
             if (ImGui.BeginChild("Messages", ImGuiChildFlags.None, ImGuiWindowFlags.AlwaysVerticalScrollbar | ImGuiWindowFlags.NoBackground))
             {
+                var status = ChatManager.HistoryStatus;
+                if (status?.HasFailure == true)
+                {
+                    ImGui.TextColored(new Vector4(1, 0.45f, 0.3f, 1), "Chat history storage needs attention");
+                    ImGui.PushTextWrapPos(0f);
+                    ImGui.TextUnformatted(status.Error ?? status.LastRejection ?? "Unknown storage error");
+                    if (status.PendingCount > 0)
+                        ImGui.TextUnformatted($"{status.PendingCount} message(s) are pending. Keep ZDPS open while storage recovers.");
+                    if (status.RejectedCount > 0)
+                        ImGui.TextUnformatted($"{status.RejectedCount} message(s) were rejected and were not archived. They cannot be restored after closing.");
+                    ImGui.PopTextWrapPos();
+                }
+                if (ChatManager.HistoryRestoreError is { } restoreError)
+                {
+                    ImGui.PushTextWrapPos(0f);
+                    ImGui.TextUnformatted(restoreError);
+                    ImGui.PopTextWrapPos();
+                }
+                if (!ChatManager.HistoryLoadTask.IsCompleted) ImGui.TextUnformatted("Restoring saved chat history...");
                 if (SelectedChatTab != null)
                 {
-                    lock (SelectedChatTab.MessageIds)
+                    long[] messageIds;
+                    lock (SelectedChatTab.MessageIds) messageIds = SelectedChatTab.MessageIds.ToArray();
+                    foreach (var msgId in messageIds)
                     {
-                        foreach (var msgId in SelectedChatTab.MessageIds)
-                        {
-                            if (ChatManager.Messages.TryGetValue(msgId, out var msg))
-                            {
-                                DrawChatMessage(msg);
-                            }
-                        }
+                        if (ChatManager.Messages.TryGetValue(msgId, out var msg)) DrawChatMessage(msg);
                     }
 
                     if (ImGui.GetScrollMaxY() != ImGui.GetScrollY())
@@ -691,7 +713,12 @@ namespace BPSR_ZDPS.Windows
 
         private static void DrawChatSenderName(ChatMessage msg)
         {
-            ChatManager.Senders.TryGetValue(msg.SenderId, out var sender);
+            if (!ChatManager.Senders.TryGetValue(msg.SenderId, out var sender))
+            {
+                // A background reload may have replaced this render's display snapshot.
+                ImGui.TextUnformatted($"[{msg.SenderId}]");
+                return;
+            }
             ImGui.PushStyleColor(ImGuiCol.TextLink, new Vector4(0.40f, 0.70f, 1.00f, 1.00f));
             if (ImGui.TextLink($"[{sender.Info.Name}]##ChatMsgName_{msg.GetHashCode().ToString()}"))
             {

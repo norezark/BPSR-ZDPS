@@ -9,7 +9,6 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $repositoryRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
-$gitSafeRoot = $repositoryRoot.Replace('\', '/')
 $outputRoot = if ([IO.Path]::IsPathRooted($OutputDirectory)) {
     [IO.Path]::GetFullPath($OutputDirectory)
 } else {
@@ -36,23 +35,41 @@ function Invoke-DotNetLogged {
 
 Push-Location $repositoryRoot
 try {
-    $commit = & git -c "safe.directory=$gitSafeRoot" rev-parse HEAD
+    $commit = & git rev-parse HEAD
     if ($LASTEXITCODE -ne 0) { throw 'A Git checkout is required.' }
-    $dirty = & git -c "safe.directory=$gitSafeRoot" status --porcelain
+    $dirty = & git status --porcelain
     if ($LASTEXITCODE -ne 0 -or $dirty) { throw 'Commit source changes before packaging so the source ZIP matches the binary.' }
     New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
     $restoreArgs = if ($NoRestore) { @('--no-restore') } else { @() }
     $testsLog = Join-Path $outputRoot "tests-$Version.log"
+    $chatLog = Join-Path $outputRoot "chat-$Version.log"
+    $chatIntegrationLog = Join-Path $outputRoot "chat-integration-$Version.log"
+    $settingsLog = Join-Path $outputRoot "installation-settings-$Version.log"
     $uiLog = Join-Path $outputRoot "ui-$Version.log"
     $publishLog = Join-Path $outputRoot "publish-$Version.log"
 
     Invoke-DotNetLogged -Label 'Factor tests' -LogPath $testsLog -Arguments (
         @('run', '--project', 'tests/FactorEnergy.Tests', '-c', 'Release', '--verbosity', 'quiet') + $restoreArgs)
+    Invoke-DotNetLogged -Label 'Chat history store' -LogPath $chatLog -Arguments (
+        @('run', '--project', 'tests/ChatHistory.Tests', '-c', 'Release', '--verbosity', 'quiet') + $restoreArgs)
+    Invoke-DotNetLogged -Label 'Chat history integration' -LogPath $chatIntegrationLog -Arguments (
+        @('run', '--project', 'tests/ChatHistory.IntegrationTests', '-c', 'Release', '--verbosity', 'quiet') + $restoreArgs)
+    Invoke-DotNetLogged -Label 'Real installation settings' -LogPath $settingsLog -Arguments (
+        @('run', '--project', 'tests/InstallationSettings.Tests', '-c', 'Release', '--verbosity', 'quiet') + $restoreArgs)
     Invoke-DotNetLogged -Label 'Headless UI' -LogPath $uiLog -Arguments (
         @('run', '--project', 'tests/FactorEnergy.UiSmoke', '-c', 'Release', '--verbosity', 'quiet') + $restoreArgs)
     $testsText = Get-Content -LiteralPath $testsLog -Raw
+    $chatText = Get-Content -LiteralPath $chatLog -Raw
+    $chatIntegrationText = Get-Content -LiteralPath $chatIntegrationLog -Raw
+    $settingsText = Get-Content -LiteralPath $settingsLog -Raw
     $uiText = Get-Content -LiteralPath $uiLog -Raw
     $testSummary = [regex]::Match($testsText, '(\d+) passed, 0 failed')
+    $chatSummary = [regex]::Match($chatText, '(\d+)/(\d+) chat history tests passed')
+    $chatIntegrationSummary = [regex]::Match($chatIntegrationText, 'Chat history integration tests: (\d+) passed; 0 failed')
+    if (-not $chatSummary.Success -or $chatSummary.Groups[1].Value -ne $chatSummary.Groups[2].Value -or
+        -not $chatIntegrationSummary.Success) { throw 'Expected chat test summaries were not found.' }
+    $settingsSummary = [regex]::Match($settingsText, 'Installation settings tests: (\d+) passed; 0 failed')
+    if (-not $settingsSummary.Success) { throw 'Expected installation settings test summary was not found.' }
     $uiSummary = [regex]::Match($uiText, '(\d+) UI scenarios passed')
     if (-not $testSummary.Success -or -not $uiSummary.Success) { throw 'Expected test summaries were not found.' }
 
@@ -62,7 +79,7 @@ try {
           '-p:DebugType=None', '-p:DebugSymbols=false', "-p:InformationalVersion=$Version",
           '-o', $packageDirectory, '--verbosity', 'quiet') + $restoreArgs)
 
-    foreach ($name in @('README.FactorEnergy.ja.md', 'JAPANESE-NAMES.md', 'CHANGELOG.FactorEnergy.md')) {
+    foreach ($name in @('README.FactorEnergy.ja.md', 'JAPANESE-NAMES.md', 'CHANGELOG.FactorEnergy.md', 'README.ChatHistory.ja.md')) {
         Copy-Item -LiteralPath (Join-Path $repositoryRoot $name) -Destination $packageDirectory
     }
     Copy-Item -LiteralPath (Join-Path $repositoryRoot 'README.FactorEnergy.ja.md') -Destination (Join-Path $packageDirectory 'README.ja.md')
@@ -92,20 +109,23 @@ try {
         createdUtc = [DateTime]::UtcNow.ToString('o'); sdk = (& dotnet --version)
         runtimeIdentifier = 'win-x64'; selfContained = $true
         unitAndIntegrationTests = @{ passed = [int]$testSummary.Groups[1].Value; failed = 0 }
+        chatHistoryStoreTests = @{ passed = [int]$chatSummary.Groups[1].Value; failed = 0 }
+        chatHistoryIntegrationTests = @{ passed = [int]$chatIntegrationSummary.Groups[1].Value; failed = 0 }
+        actualInstallationSettingsTests = @{ passed = [int]$settingsSummary.Groups[1].Value; failed = 0 }
         headlessUiScenarios = @{ passed = [int]$uiSummary.Groups[1].Value; failed = 0 }
         liveGameComparison = 'not performed'; desktopAppearanceReview = 'not performed'
         exeSha256 = (Get-FileHash -LiteralPath $exe).Hash.ToLowerInvariant()
         factorDataSha256 = $dataHashes
     }
     $info | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $packageDirectory 'BUILD-INFO.json') -Encoding utf8
-    & git -c "safe.directory=$gitSafeRoot" archive --format=zip --prefix=ZDPS-IllusionEnergy-source/ "--output=$sourceZip" $commit
+    & git archive --format=zip --prefix=ZDPS-IllusionEnergy-source/ "--output=$sourceZip" $commit
     if ($LASTEXITCODE -ne 0) { throw 'Source archive failed.' }
     [IO.Compression.ZipFile]::CreateFromDirectory($packageDirectory, $binaryZip, [IO.Compression.CompressionLevel]::Optimal, $true)
     @($binaryZip, $sourceZip) | ForEach-Object {
         '{0}  {1}' -f (Get-FileHash -LiteralPath $_).Hash.ToLowerInvariant(), [IO.Path]::GetFileName($_)
     } | Set-Content -LiteralPath (Join-Path $outputRoot "SHA256SUMS-$Version.txt") -Encoding utf8
     @(
-        "ZDPS Illusion Energy v$Version", "Source commit: $commit", $testSummary.Value, $uiSummary.Value,
+        "ZDPS Illusion Energy v$Version", "Source commit: $commit", $testSummary.Value, $chatSummary.Value, $chatIntegrationSummary.Value, $settingsSummary.Value, $uiSummary.Value,
         'Windows x64 self-contained publish: passed', 'Factor data and license copies: matched',
         'Live game comparison: not performed', 'Desktop appearance review: not performed'
     ) | Set-Content -LiteralPath (Join-Path $outputRoot "verification-$Version.txt") -Encoding utf8

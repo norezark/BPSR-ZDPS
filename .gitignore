@@ -366,3 +366,6 @@ FodyWeavers.xsd
 # Personal factor tracking settings (definitions are versioned separately).
 FactorEnergy.settings.json
 FactorEnergy.settings.json.tmp
+
+# Portable per-install chat archive (never ship or commit private chat).
+**/Data/ChatHistory/

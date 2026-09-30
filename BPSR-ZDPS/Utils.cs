@@ -1,4 +1,4 @@
-﻿using BPSR_ZDPS.DataTypes;
+using BPSR_ZDPS.DataTypes;
 using Silk.NET.Direct3D11;
 using System;
 using System.Collections.Generic;
@@ -24,9 +24,10 @@ namespace BPSR_ZDPS
 {
     public static unsafe class Utils
     {
-        // Note: This value MUST MATCH the "Data" folder name for the project resources that AppStrings.json and other files are in
-        // Those files are copied to the output directory at build time with a matching path so if this mismatches then the app will not see them
-        public const string DATA_DIR_NAME = "Data";
+        // Build resources still use the Data folder beside the executable.
+        // Anchor resources and existing settings/database files to this portable installation,
+        // independently of a shortcut's working directory or the process user's profile.
+        public static readonly string DATA_DIR_NAME = AppPaths.DataDirectory;
         public static readonly Guid D3DDebugObjectName = new(0x429b8c22, 0x9188, 0x4b0c, 0x87, 0x42, 0xac, 0xb0, 0xbf, 0x85, 0xc2, 0x00);
 
         public static Version AppVersion { get; set; } = typeof(Utils).Assembly.GetName().Version;

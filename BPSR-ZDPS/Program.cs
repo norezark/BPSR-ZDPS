@@ -1,4 +1,4 @@
-﻿using BPSR_ZDPS.Windows;
+using BPSR_ZDPS.Windows;
 using Hexa.NET.GLFW;
 using Hexa.NET.ImGui;
 using Hexa.NET.ImGui.Backends.D3D11;
@@ -19,12 +19,28 @@ namespace BPSR_ZDPS
 {
     internal class Program
     {
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        private static extern int MessageBoxW(IntPtr window, string text, string caption, uint type);
+
         private static MainWindow mainWindow;
         private static GLFWwindowPtr window;
         public static D3D11Manager manager;
 
         static void Main(string[] args)
         {            
+            try
+            {
+                AppPaths.ValidateLegacySettingsLocation();
+            }
+            catch (Exception ex) when (ex is InvalidOperationException or IOException or UnauthorizedAccessException)
+            {
+                Console.Error.WriteLine(ex.Message);
+                if (OperatingSystem.IsWindows()) MessageBoxW(IntPtr.Zero, ex.Message, "ZDPS profile settings", 0x10);
+                return;
+            }
+            // Keep legacy relative logs/reports separate too, after checking for custom
+            // Start in settings. This changes only this process's working directory.
+            Directory.SetCurrentDirectory(AppPaths.InstallationDirectory);
             Settings.Load();
 
             var logBuilder = new LoggerConfiguration();
@@ -61,6 +77,9 @@ namespace BPSR_ZDPS
             Log.Information($"Starting ZDPS v{Utils.AppVersion}");
 
             DB.Init();
+
+            Managers.ChatManager.InitializeHistory();
+            AppDomain.CurrentDomain.ProcessExit += (_, _) => Managers.ChatManager.ShutdownHistory();
 
             GLFW.Init();
 
@@ -254,6 +273,8 @@ namespace BPSR_ZDPS
 
             // Stop capturing new data to allow our current states to be their final states
             MessageManager.StopCapturing();
+            if (!Managers.ChatManager.ShutdownHistory())
+                Log.Error("Some captured chat messages could not be saved before exit. Check chat history storage status.");
 
             // Save the current encounter to the database before exiting
             if (EncounterManager.Current != null)

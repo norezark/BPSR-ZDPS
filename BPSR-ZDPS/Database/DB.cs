@@ -1,4 +1,4 @@
-﻿using BPSR_ZDPS.Database;
+using BPSR_ZDPS.Database;
 using BPSR_ZDPS.Database.Migrations;
 using BPSR_ZDPS.DataTypes;
 using Dapper;
@@ -37,7 +37,10 @@ namespace BPSR_ZDPS
             }
 
             var useFileDb = Settings.Instance.UseDatabaseForEncounterHistory;
-            DbConn = new SqliteConnection($"Data Source={(useFileDb ? DbFilePath : ":memory:")}");
+            DbConn = new SqliteConnection(new SqliteConnectionStringBuilder
+            {
+                DataSource = useFileDb ? DbFilePath : ":memory:"
+            }.ToString());
             DbConn.Open();
 
             DBSchema.CreateTables(DbConn);
